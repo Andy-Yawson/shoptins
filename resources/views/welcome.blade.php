@@ -14,7 +14,7 @@
                         Categories
                     </header>
                     <ul class="menu-category">
-                        <?php $categories = \App\Category::orderBy('category_id','desc')->limit(6)->get(); ?>
+                        <?php $categories = \App\Category::inRandomOrder()->limit(7)->get(); ?>
                         @foreach($categories as $category)
                             <li>
                                 <a href="{{route('user.shop.category',$category->category_id)}}">
@@ -32,11 +32,11 @@
                         @foreach($slider as $slide)
                             <div class="carousel-item @if($loop->iteration == 1) active @else '' @endif">
                                 <img class="d-block w-100" src="{{asset('images/slider_images/'.$slide->slider_image)}}"
-                                     alt="slide image" height="370px">
-                                <article class="carousel-caption" style="background: rgba(0,0,0,0.5)">
+                                     alt="slide image" height="390px">
+                                {{--<article class="carousel-caption" style="background: rgba(0,0,0,0.5)">
                                     <h4>{{ $slide->slider_name }}</h4>
                                     <p>{{ $slide->slider_description }}</p>
-                                </article> <!-- carousel-caption .// -->
+                                </article>--}}
                             </div>
                         @endforeach
                     </div>

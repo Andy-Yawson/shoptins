@@ -27,7 +27,7 @@ class ManufactureController extends Controller
     public function insertManufacture(Request $request){
         $this->validate($request,[
             'manufacture_name' => 'required|min:3',
-            'manufacture_desc' => 'required|min:6'
+            'manufacture_desc' => 'required|min:3',
         ]);
         $ps = '';
         if($request->publication_status == null){

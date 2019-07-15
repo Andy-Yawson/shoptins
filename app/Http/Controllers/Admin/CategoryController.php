@@ -27,7 +27,7 @@ class CategoryController extends Controller{
     public function insertCategory(Request $request){
         $this->validate($request,[
             'category_name' => 'required|min:3',
-            'category_desc' => 'required|min:6'
+            'category_desc' => 'required|min:3',
         ]);
         $ps = '';
         if($request->publication_status == null){

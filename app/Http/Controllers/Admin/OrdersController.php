@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\International;
 use App\LogOrder;
 use App\Order;
 use App\Payment;
@@ -29,6 +30,27 @@ class OrdersController extends Controller
             ->get();
 
         return view('components.admin.manage_orders',['orders'=>$all_orders]);
+    }
+
+    public function manageOrdersInt(){
+        $orders = DB::table('international_order')
+            ->join('users','international_order.customer_id','=','users.id')
+            ->select('international_order.*','users.name','users.email')
+            ->get();
+        return view('components.admin.manage_int_orders',compact('orders'));
+    }
+
+    public function viewOrderInt($order_code){
+        $order_details = DB::table('international_order')
+            ->join('users','international_order.customer_id','=','users.id')
+            ->join('international','international_order.order_code','=','international.code')
+            ->where('international_order.order_code',$order_code)
+            ->select('international_order.*','international.*','users.*')
+            ->get();
+            /*echo "<pre>";
+            print_r($order_details);
+            echo "</pre>";*/
+        return view('components.admin.view_order_int',['order_detail'=>$order_details]);
     }
 
     public function viewOrder($order_id){

@@ -7,14 +7,14 @@
     <div class="container">
 
         <div class="row row-sm">
-            <aside class="col-md-3">
+            <aside class="col-md-3 mb-2">
                 <div class="card">
                     <header class="card-header white category-header">
                         <i class="icon-menu"></i>
                         Categories
                     </header>
                     <ul class="menu-category">
-                        <?php $categories = \App\Category::inRandomOrder()->limit(7)->get(); ?>
+                        <?php $categories = \App\Category::orderBy('created_at','asc')->limit(7)->get(); ?>
                         @foreach($categories as $category)
                             <li>
                                 <a href="{{route('user.shop.category',$category->category_id)}}">
@@ -71,8 +71,9 @@
                             </div>
                             <figcaption class="text-wrap">
                                 <h5 class="title">Sync across all devices</h5>
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labor </p>
+                                <p class="text-muted">
+                                    Access Shoptins via any platform and still get the same taste of easy shopping
+                                </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->
                     </article> <!-- panel-lg.// -->
@@ -87,8 +88,9 @@
                             </div>
                             <figcaption class="text-wrap">
                                 <h5 class="title">Secured protocol</h5>
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt dolor laburab </p>
+                                <p class="text-muted">
+                                    We keep you from any threats during shopping with us, its safe.
+                                </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->
                     </article> <!-- panel-lg.// -->
@@ -103,8 +105,9 @@
                             </div>
                             <figcaption class="text-wrap">
                                 <h5 class="title">Secured Payment</h5>
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt dolor laburab </p>
+                                <p class="text-muted">
+                                    Our payment is made easy and secured with problems at all.
+                                </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->
                     </article> <!-- panel-lg.// -->
@@ -165,73 +168,6 @@
 </section>
 <!-- ========================= SECTION LATEST CONTENT END// ========================= -->
 
-{{--<!--===================== Item of the Day =====================-->
-<section class="section-content padding-y bg">
-    <div class="container">
-        <article class="card card-product">
-            <div class="card-body">
-                <header class="section-heading">
-                    <h3 class="title-section">Product Of The Day</h3>
-                </header>
-                <div class="row">
-                    <aside class="col-sm-3">
-                        <div class="img-wrap"><img src="{{ asset('home/images/items/2.jpg') }}"></div>
-                    </aside> <!-- col.// -->
-                    <article class="col-sm-6">
-
-                        <h4 class="title"> Ut wisi enim ad minim veniam  </h4>
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <div class="label-rating">132 reviews</div>
-                            <div class="label-rating">154 orders </div>
-                        </div> <!-- rating-wrap.// -->
-                        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam </p>
-                        <dl class="dlist-align">
-                            <dt>Color</dt>
-                            <dd>Black and white</dd>
-                        </dl>  <!-- item-property-hor .// -->
-                        <dl class="dlist-align">
-                            <dt>Material</dt>
-                            <dd>Syntetic, wooden</dd>
-                        </dl>  <!-- item-property-hor .// -->
-                        <dl class="dlist-align">
-                            <dt>Delivery</dt>
-                            <dd>Russia, USA, and Europe</dd>
-                        </dl>  <!-- item-property-hor .// -->
-
-                    </article> <!-- col.// -->
-                    <aside class="col-sm-3 border-left">
-                        <div class="action-wrap">
-                            <div class="price-wrap h4">
-                                <span class="price"> $56 </span>
-                                <del class="price-old"> $98</del>
-                            </div> <!-- info-price-detail // -->
-                            <p class="text-success">Free shipping</p>
-                            <br>
-                            <p>
-                                <a href="#" class="btn btn-primary"> Buy now </a>
-                                <a href="#" class="btn btn-secondary"> Details  </a>
-                            </p>
-                            <a href="#"><i class="fa fa-heart"></i> Add to wishlist</a>
-                        </div> <!-- action-wrap.// -->
-                    </aside> <!-- col.// -->
-                </div> <!-- row.// -->
-            </div> <!-- card-body .// -->
-        </article> <!-- product-list.// -->
-    </div>
-</section>
-<!--===================== Item of the Day End =====================-->--}}
 
 <!-- ========================= SECTION FEATURED CONTENT ========================= -->
 <section class="section-content padding-y bg">
@@ -285,77 +221,52 @@
             <div class="card-body">
                 <div class="row mb-4">
 
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 mb-4">
+                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                         <figure class="itemside">
                             <div class="aside">
                                 <span class="icon-wrap rounded icon-sm white bg-primary"><i class="fa fa-coffee"></i></span>
                             </div>
                             <figcaption class="text-wrap">
-                                <h5 class="title">Trend Forecasting</h5>
-                                <p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et </p>
+                                <h5 class="title">Bright Shopping</h5>
+                                <p>
+                                    Get access to all categories of your choice for efficient shopping.
+                                </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->
                     </div><!-- col // -->
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 mb-4">
+                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                         <figure class="itemside">
                             <div class="aside">
                                 <span class="icon-wrap rounded icon-sm white bg-primary"><i class="fa fa-lightbulb"></i></span>
                             </div>
                             <figcaption class="text-wrap">
                                 <h5 class="title">Creative Strategy</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt  </p>
+                                <p>
+                                    We care about you, so prices are well affordable as a standard market price.
+                                </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->
                     </div><!-- col // -->
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 mb-4">
+                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                         <figure class="itemside">
                             <div class="aside">
-                                <span class="icon-wrap rounded icon-sm white bg-primary"><i class="fa fa-cogs"></i></span>
+                                <span class="icon-wrap rounded icon-sm white bg-primary"><i class="fa fa-building"></i></span>
                             </div>
                             <figcaption class="text-wrap">
-                                <h5 class="title">Building Business </h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt lab </p>
+                                <h5 class="title">Find Us</h5>
+                                <p>
+                                    5th Floor Ghana Multimedia Center <br> High Street Accra
+                                </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->
                     </div> <!-- col // -->
 
-                </div> <!-- row.// -->
-                <div class="row">
-                    <div class="col-lg-4 col-lg-4 col-sm-12 col-xs-12 mb-4">
-                        <div class="card-banner align-items-end" style="height:250px;
-                         background-image: url('{{ asset('home/images/posts/5.jpg') }}');">
-                            <article class="overlay m-4 w-100">
-                                <h5 class="card-title">Primary text as title</h5>
-                                <a href="#" class="btn btn-warning btn-sm"> View more </a>
-                            </article>
-                        </div> <!-- card.// -->
-                    </div>
-                    <div class="col-lg-4 col-lg-4 col-sm-12 col-xs-12 mb-4">
-                        <div class="card-banner align-items-end" style="height:250px;
-                         background-image: url('{{ asset('home/images/posts/3.jpg') }}');">
-                            <article class="overlay m-4 w-100">
-                                <h5 class="card-title">Primary text as title</h5>
-                                <a href="#" class="btn btn-warning btn-sm"> View more </a>
-                            </article>
-                        </div> <!-- card.// -->
-                    </div>
-                    <div class="col-lg-4 col-lg-4 col-sm-12 col-xs-12 mb-4">
-                        <div class="card-banner align-items-end" style="height:250px;
-                         background-image: url('{{ asset('home/images/posts/2.jpg') }}');">
-                            <article class="overlay m-4 w-100">
-                                <h5 class="card-title">Primary text as title</h5>
-                                <a href="#" class="btn btn-warning btn-sm"> View more </a>
-                            </article>
-                        </div> <!-- card.// -->
-                    </div>
                 </div> <!-- row.// -->
             </div>
         </div>
     </div>
 </section>
 <!-- ===================== SECTION MORE ADS END================-->
+
 
 @endsection

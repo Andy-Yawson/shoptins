@@ -12,16 +12,16 @@ body{
 }
 
 nav.navbar-top{
-    background: #5c007a !important;
+    background: #920101 !important;
 }
 
 .search-btn{
-    background: #5c007a !important;
-    border: 1px solid #5c007a !important;
+    background: #920101 !important;
+    border: 1px solid #920101 !important;
 }
 
 #shopping-cart,.user-icon{
-    color: #5c007a;
+    color: #920101;
 }
 
 .shopping-cart-text{
@@ -31,7 +31,7 @@ nav.navbar-top{
 .category-header,.card-header{
     color: #f7f7f7 !important;
     font-weight: bold;
-    background: #7b5ec1 !important;
+    background: #923e40 !important;
 }
 
 .card-header > a > h6,.card-header > a > i{
@@ -43,17 +43,17 @@ nav.navbar-top{
 }
 
 .menu-category > li > a,.menu-category .submenu li a{
-    color: #7b5ec1 !important;
+    color: #923e40 !important;
 }
 
 .bottom-wrap a{
-    background: #5c007a !important;
-    border: 1px solid #5c007a !important;
+    background: #920101 !important;
+    border: 1px solid #920101 !important;
     border-radius: 0 !important;
 }
 
 .section-footer{
-    background: #5c007a !important;
+    background: #92001c !important;
 }
 
 ul.footer-li li{
@@ -69,7 +69,7 @@ ul.footer-li li{
 }
 
 .num, .currency{
-    color: #5c007a;
+    color: #923e40;
 }
 
 /* Rating Star Widgets Style */
@@ -162,14 +162,14 @@ ul.rating-stars-detail{
     margin-bottom: 8%;
     margin-top: -10%;
     text-align: center;
-    color: #0062cc;
+    color: #920101;
 }
 .contact-form .btnContact {
     width: 50%;
     border: none;
     border-radius: 1rem;
     padding: 1.5%;
-    background: #5c007a;
+    background: #920101;
     font-weight: 600;
     color: #fff;
     cursor: pointer;
@@ -180,7 +180,18 @@ ul.rating-stars-detail{
     border-radius: 1rem;
     padding: 1.5%;
     color: #fff;
-    background-color: #0062cc;
+    background-color: #920101;
     border: none;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    div.carousel-item img{
+        height: 200px;
+    }
+
+    img.logo{
+        width: 80px !important;
+        height: 40px !important;
+    }
 }

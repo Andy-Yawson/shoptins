@@ -289,15 +289,15 @@
 						<article class="box">
 							<figure class="itemside">
 								<div class="aside align-self-center">
-									<span class="icon-wrap icon-md round bg-warning">
-										<i class="fa fa-lightbulb white"></i>
-									</span>
+					<span class="icon-wrap icon-md round bg-warning">
+						<i class="fa fa-lightbulb white"></i>
+					</span>
 								</div>
 								<figcaption class="text-wrap">
 									<h5 class="title">Sync across all devices</h5>
-									<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-										do eiusmod
-										tempor incididunt ut labor </p>
+									<p class="text-muted">
+										Access Shoptins via any platform and still get the same taste of easy shopping
+									</p>
 								</figcaption>
 							</figure> <!-- iconbox // -->
 						</article> <!-- panel-lg.// -->
@@ -306,15 +306,15 @@
 						<article class="box">
 							<figure class="itemside">
 								<div class="aside align-self-center">
-									<span class="icon-wrap icon-md round bg-danger">
-										<i class="fa fa-lock white"></i>
-									</span>
+					<span class="icon-wrap icon-md round bg-danger">
+						<i class="fa fa-lock white"></i>
+					</span>
 								</div>
 								<figcaption class="text-wrap">
 									<h5 class="title">Secured protocol</h5>
-									<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-										do eiusmod
-										tempor incididunt dolor laburab </p>
+									<p class="text-muted">
+										We keep you from any threats during shopping with us, its safe.
+									</p>
 								</figcaption>
 							</figure> <!-- iconbox // -->
 						</article> <!-- panel-lg.// -->
@@ -323,15 +323,15 @@
 						<article class="box">
 							<figure class="itemside">
 								<div class="aside align-self-center">
-									<span class="icon-wrap icon-md round bg-success">
-										<i class="fa fa-credit-card white"></i>
-									</span>
+					<span class="icon-wrap icon-md round bg-success">
+						<i class="fa fa-credit-card white"></i>
+					</span>
 								</div>
 								<figcaption class="text-wrap">
 									<h5 class="title">Secured Payment</h5>
-									<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-										do eiusmod
-										tempor incididunt dolor laburab </p>
+									<p class="text-muted">
+										Our payment is made easy and secured with problems at all.
+									</p>
 								</figcaption>
 							</figure> <!-- iconbox // -->
 						</article> <!-- panel-lg.// -->
@@ -371,7 +371,7 @@
 	</div>
 
 	{{-- Error Modal --}}
-	<div class="modal fade" id="addToCartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+	<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
 	     aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">

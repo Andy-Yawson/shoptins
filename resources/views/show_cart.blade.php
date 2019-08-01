@@ -38,15 +38,7 @@
                                                      class="img-thumbnail img-sm">
                                             </div>
                                             <figcaption class="media-body">
-                                                <h6 class="title text-truncate">{{$single->name}}</h6>
-                                                <dl class="dlist-inline small">
-                                                    <dt>Size:</dt>
-                                                    <dd>XXL</dd>
-                                                </dl>
-                                                <dl class="dlist-inline small">
-                                                    <dt>Color:</dt>
-                                                    <dd>Orange color</dd>
-                                                </dl>
+                                                <h6 class="title pt-4">{{$single->name}}</h6>
                                             </figcaption>
                                         </figure>
                                     </td>
@@ -139,8 +131,9 @@
                                 </div>
                                 <figcaption class="text-wrap">
                                     <h5 class="title">Sync across all devices</h5>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labor </p>
+                                    <p class="text-muted">
+                                        Access Shoptins via any platform and still get the same taste of easy shopping
+                                    </p>
                                 </figcaption>
                             </figure> <!-- iconbox // -->
                         </article> <!-- panel-lg.// -->
@@ -155,8 +148,9 @@
                                 </div>
                                 <figcaption class="text-wrap">
                                     <h5 class="title">Secured protocol</h5>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt dolor laburab </p>
+                                    <p class="text-muted">
+                                        We keep you from any threats during shopping with us, its safe.
+                                    </p>
                                 </figcaption>
                             </figure> <!-- iconbox // -->
                         </article> <!-- panel-lg.// -->
@@ -171,8 +165,9 @@
                                 </div>
                                 <figcaption class="text-wrap">
                                     <h5 class="title">Secured Payment</h5>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt dolor laburab </p>
+                                    <p class="text-muted">
+                                        Our payment is made easy and secured with problems at all.
+                                    </p>
                                 </figcaption>
                             </figure> <!-- iconbox // -->
                         </article> <!-- panel-lg.// -->

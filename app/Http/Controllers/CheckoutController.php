@@ -18,24 +18,32 @@ class CheckoutController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['']);
+        $this->middleware('auth')->except(['checkout']);
     }
 
     public function checkout(){
-        $checkout = Shipping::where('user_id',Auth::user()->id)->first();
-        return view('checkout',['checkout'=>$checkout]);
+        if (\auth()->check()){
+            $checkout = Shipping::where('user_id',Auth::user()->id)->first();
+            return view('checkout',['checkout'=>$checkout]);
+        }else{
+            return view('checkout');
+        }
     }
 
     public function createShipping(Request $request){
 
         //========= do validation checks here ============
         $data = array();
+        if ($request->shipping_notes == null)
+            $notes = "none";
+        else
+            $notes = $request->shipping_notes;
         $data['shipping_name'] = $request->shipping_name;
         $data['shipping_address'] = $request->shipping_address;
         $data['shipping_city'] = $request->shipping_city;
         $data['shipping_email'] = $request->shipping_email;
         $data['shipping_phone'] = $request->shipping_phone;
-        $data['shipping_notes'] = $request->shipping_notes;
+        $data['shipping_notes'] = $notes;
         $data['user_id'] = Auth::user()->id;
         $data['created_at'] = Carbon::now();
         $data['updated_at'] = Carbon::now();
@@ -108,7 +116,6 @@ class CheckoutController extends Controller
             $oddata["product_name"] = $single->name;
             $oddata["product_price"] = $single->price;
             $oddata["product_sales_quantity"] = $single->qty;
-            $oddata["shop_id"] = $single->options->shop;
             $oddata['created_at'] = Carbon::now();
             $oddata['updated_at'] = Carbon::now();
 
@@ -125,10 +132,10 @@ class CheckoutController extends Controller
 
     public function confirmationPage(){
         $category = Category::all();
-        if (Session::has('order_code'))
+        if (Session::has('order_code') or Session::has('code'))
             return view('confirmation',['categories'=>$category]);
         else
-            return redirect(route('user.welcome',['categories'=>$category]));
+            return redirect()->back();
     }
 }
 

@@ -163,6 +163,16 @@
                             <span class="title">Manage Orders</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="sidebar-link" href="{{route('admin.view.orders.int')}}">
+                        <span class="icon-holder">
+                            <i class="c-pink-500 fa fa-money"></i>
+                        </span>
+                            <span class="title">International Orders</span>
+                        </a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle" href="javascript:void(0);">
                         <span class="icon-holder">
@@ -175,6 +185,7 @@
                             <li><a href="{{route('admin.view.admin')}}">View all administrators</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle" href="javascript:void(0);">
                         <span class="icon-holder">
@@ -255,6 +266,16 @@
                             <span class="title">Manage Orders</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="sidebar-link" href="{{route('admin.view.orders.int')}}">
+                        <span class="icon-holder">
+                            <i class="c-pink-500 fa fa-money"></i>
+                        </span>
+                            <span class="title">International Orders</span>
+                        </a>
+                    </li>
+
                 @endif
             </ul>
         </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
+    <meta name="author" content="Bootstrap-ecommerce by Andrews Yawson">
 
     <title>Shoptins</title>
 
@@ -41,6 +41,7 @@
                     <li class="nav-item"><a href="{{ route('user.welcome') }}" class="nav-link"> Home </a></li>
                     <li class="nav-item"><a href="{{ route('user.shop') }}" class="nav-link"> Shop </a></li>
                     <li class="nav-item"><a href="{{ route('user.contact') }}" class="nav-link"> Contact Us</a></li>
+                    <li class="nav-item"><a href="{{ route('user.about') }}" class="nav-link"> About Us</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
                 </ul> <!-- navbar-nav.// -->
             </div> <!-- collapse.// -->
@@ -51,9 +52,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3 col-sm-4">
-                    <div class="brand-wrap">
-                        <img class="logo" src="{{ asset('home/images/logo-dark.png') }}">
-                        <h2 class="logo-text">LOGO</h2>
+                    <div class="">
+                        <img class="logo" src="{{ asset('images/logo.8704dbd.png') }}"
+                        width="130px" height="50px">
                     </div> <!-- brand-wrap.// -->
                 </div>
                 <div class="col-lg-4 col-xl-5 col-sm-8">
@@ -138,18 +139,15 @@
                     <ul class="list-unstyled footer-li">
                         <li> <a href="#">Help center</a></li>
                         <li> <a href="#">Money refund</a></li>
-                        <li> <a href="#">Terms and Policy</a></li>
-                        <li> <a href="#">Open dispute</a></li>
+                        <li> <a href="{{ route('user.terms') }}">Terms and Conditions</a></li>
                     </ul>
                 </aside>
                 <aside class="col-sm-12 col-lg-3 col-xs-12  col-md-3 white">
                     <h5 class="title">My Account</h5>
                     <ul class="list-unstyled footer-li">
-                        <li> <a href="#"> User Login </a></li>
-                        <li> <a href="#"> User register </a></li>
+                        <li> <a href="{{ route('login') }}"> User Login </a></li>
+                        <li> <a href="{{ route('login') }}"> User register </a></li>
                         <li> <a href="#"> Account Setting </a></li>
-                        <li> <a href="#"> My Orders </a></li>
-                        <li> <a href="#"> My Wishlist </a></li>
                     </ul>
                 </aside>
                 <aside class="col-sm-12 col-lg-3 col-xs-12  col-md-3 white">
@@ -158,16 +156,15 @@
                         <li> <a href="#"> Our history </a></li>
                         <li> <a href="#"> How to buy </a></li>
                         <li> <a href="#"> Delivery and payment </a></li>
-                        <li> <a href="#"> Advertice </a></li>
-                        <li> <a href="#"> Partnership </a></li>
                     </ul>
                 </aside>
                 <aside class="col-sm-12 col-lg-3 col-xs-12">
                     <article class="white">
                         <h5 class="title">Contacts</h5>
                         <p>
-                            <strong>Phone: </strong> +(233) 209 386 780 <br>
-                            <strong>Fax:</strong> +(233) 550 889 786
+                            <strong>Phone: </strong> +(233) 267 960 819 <br>
+                            <strong>WhatsApp:</strong> +(233) 267 960 819 <br>
+                            <strong>Email:</strong> support@shoptins.com
                         </p>
 
                         <div class="btn-group white social-links-footer">

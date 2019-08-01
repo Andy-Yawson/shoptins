@@ -42,30 +42,6 @@
                     </article> <!-- card-group-item.// -->
                     <article class="card-group-item">
                         <header class="card-header">
-                            <a href="#" data-toggle="collapse" data-target="#collapse33">
-                                <i class="icon-action fa fa-chevron-down"></i>
-                                <h6 class="title">By Price  </h6>
-                            </a>
-                        </header>
-                        <div class="filter-content collapse show" id="collapse33">
-                            <div class="card-body">
-                                <input type="range" class="custom-range" min="0" max="100" name="">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Min</label>
-                                        <input class="form-control" placeholder="&#8373;1" type="number" min="1">
-                                    </div>
-                                    <div class="form-group text-right col-md-6">
-                                        <label>Max</label>
-                                        <input class="form-control" placeholder="&#8373;1,0000" type="number" max="10000">
-                                    </div>
-                                </div> <!-- form-row.// -->
-                                <button class="btn btn-block btn-outline-primary">Apply</button>
-                            </div> <!-- card-body.// -->
-                        </div> <!-- collapse .// -->
-                    </article> <!-- card-group-item.// -->
-                    <article class="card-group-item">
-                        <header class="card-header">
                             <a href="#" data-toggle="collapse" data-target="#collapse44">
                                 <i class="icon-action fa fa-chevron-down"></i>
                                 <h6 class="title">By Manufacturer </h6>
@@ -158,8 +134,9 @@
                             </div>
                             <figcaption class="text-wrap">
                                 <h5 class="title">Sync across all devices</h5>
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labor </p>
+                                <p class="text-muted">
+                                    Access Shoptins via any platform and still get the same taste of easy shopping
+                                </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->
                     </article> <!-- panel-lg.// -->
@@ -174,8 +151,9 @@
                             </div>
                             <figcaption class="text-wrap">
                                 <h5 class="title">Secured protocol</h5>
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt dolor laburab </p>
+                                <p class="text-muted">
+                                    We keep you from any threats during shopping with us, its safe.
+                                </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->
                     </article> <!-- panel-lg.// -->
@@ -190,8 +168,9 @@
                             </div>
                             <figcaption class="text-wrap">
                                 <h5 class="title">Secured Payment</h5>
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt dolor laburab </p>
+                                <p class="text-muted">
+                                    Our payment is made easy and secured with problems at all.
+                                </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->
                     </article> <!-- panel-lg.// -->

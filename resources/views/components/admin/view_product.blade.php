@@ -22,7 +22,6 @@
                                 <th>Product Price</th>
                                 <th>Category</th>
                                 <th>Manufacture</th>
-                                <th>Shop Name</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -34,7 +33,6 @@
                                 <th>Product Price</th>
                                 <th>Category</th>
                                 <th>Manufacture</th>
-                                <th>Shop Name</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -47,7 +45,6 @@
                                     <td>&#8373;{{$item->product_price}}</td>
                                     <td>{{$item->category_name}}</td>
                                     <td>{{$item->manufacture_name}}</td>
-                                    <td>{{$item->shop_name}}</td>
                                     <td>
                                         @if($item->publication_status == 0)
                                             <button class="btn btn-danger">Inactive</button>
@@ -62,17 +59,17 @@
                                     </td>
                                     <td align="center">
                                         @if($item->publication_status == 0)
-                                            <a href="{{route('admin.active.product',$item->product_id)}}"><i class="fa fa-thumbs-up fa-2x" style="color: green"></i></a>
+                                            <a title="make product active" href="{{route('admin.active.product',$item->product_id)}}"><i class="fa fa-thumbs-up fa-2x" style="color: green"></i></a>
                                         @else
-                                            <a href="{{route('admin.unactive.product',$item->product_id)}}"><i class="fa fa-thumbs-o-down fa-2x" style="color: red"></i></a>
+                                            <a title="make product inactive" href="{{route('admin.unactive.product',$item->product_id)}}"><i class="fa fa-thumbs-o-down fa-2x" style="color: red"></i></a>
                                         @endif
                                         @if($item->stock == 0)
-                                            <a href="{{route('admin.active.stock',$item->product_id)}}"><i class="fa fa-unlock fa-2x" style="color: green"></i></a>
+                                            <a title="In stock" href="{{route('admin.active.stock',$item->product_id)}}"><i class="fa fa-unlock fa-2x" style="color: green"></i></a>
                                         @else
-                                            <a href="{{route('admin.unactive.stock',$item->product_id)}}"><i class="fa fa-lock fa-2x" style="color: red"></i></a>
+                                            <a title="Out of stock" href="{{route('admin.unactive.stock',$item->product_id)}}"><i class="fa fa-lock fa-2x" style="color: red"></i></a>
                                         @endif
-                                        <a href="{{route('admin.delete.product',$item->product_id)}}"><i class="fa fa-trash-o fa-2x"></i></a>
-                                        <a href="{{route('admin.edit.product',$item->product_id)}}"><i class="fa fa-edit fa-2x"></i></a>
+                                        <a title="Delete Product" href="{{route('admin.delete.product',$item->product_id)}}"><i class="fa fa-trash-o fa-2x"></i></a>
+                                        <a title="Edit Product" href="{{route('admin.edit.product',$item->product_id)}}"><i class="fa fa-edit fa-2x"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

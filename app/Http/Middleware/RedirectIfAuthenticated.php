@@ -24,12 +24,6 @@ class RedirectIfAuthenticated
                 }
                 break;
 
-            case 'owner':
-                if (Auth::guard($guard)->check()){
-                    return redirect()->route('owner.dashboard');
-                }
-                break;
-
             case 'web':
                 if (Auth::guard($guard)->check()){
                     return redirect()->route('user.welcome');

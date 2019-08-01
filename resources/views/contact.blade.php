@@ -14,8 +14,9 @@
             <div class="card mb-4 mt-4">
                 <div class="card-body">
                     <div class="container contact-form">
-                        <div class="contact-image">
-                            <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+                        <div align="center">
+                            <img src="{{ asset('images/contact-us.svg') }}" alt="contact"
+                            width="100px" height="100px"/>
                         </div>
                         <form method="post" action="{{route('user.contact.send')}}">
                             <h3>Drop Us a Message</h3>

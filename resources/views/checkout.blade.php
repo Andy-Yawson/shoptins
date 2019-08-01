@@ -18,51 +18,51 @@
 
 						<div class="card">
 							<header class="section-heading" style="padding-left: 2%">
-								<h3 class="title-section">Billing Information</h3>
+								<h3 class="title-section">Address Information</h3>
 							</header>
 							<div class="billing_details">
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label for="name">Full Name <span>*</span></label>
 										<input type="text" class="form-control" id="name" aria-describedby="name"
-										       value="{{auth()->user()->name}}"
+										       value="@if(auth()->check()){{auth()->user()->name}}@endif" required
 										       name="shipping_name">
 									</div>
 								</div>
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label for="address">Address <span>*</span></label>
-										<input type="text" class="form-control" id="address" aria-describedby="address"
-										       name="shipping_address" value="@if($checkout){{$checkout->shipping_address}}@endif">
+										<input type="text" class="form-control" id="address" aria-describedby="address" required
+										       name="shipping_address" value="@if(!empty($checkout)){{$checkout->shipping_address}}@endif">
 									</div>
 								</div>
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label for="ctown">City / Town <span>*</span></label>
-										<input type="text" class="form-control" id="address" aria-describedby="Town/City"
-										       name="shipping_city" value="@if($checkout){{$checkout->shipping_city}}@endif">
+										<input type="text" class="form-control" id="address" aria-describedby="Town/City" required
+										       name="shipping_city" value="@if(!empty($checkout)){{$checkout->shipping_city}}@endif">
 									</div>
 								</div>
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label for="email">Email <span>*</span></label>
 										<input type="email" class="form-control" id="email" aria-describedby="email"
-										       value="{{auth()->user()->email}}"
-										       name="shipping_email">
+										       value="@if(auth()->check()){{auth()->user()->email}}@endif"
+										       name="shipping_email" required>
 									</div>
 								</div>
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label for="phone">Phone <span>*</span></label>
-										<input type="text" class="form-control" id="phone" aria-describedby="phone"
-										       name="shipping_phone" value="@if($checkout){{$checkout->shipping_phone}}@endif">
+										<input type="text" class="form-control" id="phone" aria-describedby="phone" required
+										       name="shipping_phone" value="@if(!empty($checkout)){{$checkout->shipping_phone}}@endif">
 									</div>
 								</div>
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label for="order">Order Notes <span>*</span></label>
 										<textarea class="form-control" id="order" rows="3"
-										          name="shipping_notes">@if($checkout){{$checkout->shipping_notes}}@endif</textarea>
+										          name="shipping_notes">@if(!empty($checkout)){{$checkout->shipping_notes}}@endif</textarea>
 									</div>
 								</div>
 							</div>
@@ -98,6 +98,55 @@
 								</figure>
 							</div>
 						</div>
+						<article class="list-group-item">
+							<header class="filter-header">
+								<a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" class="">
+									<i class="icon-action fa fa-chevron-down"></i>
+									<h6 class="title">Process </h6>
+								</a>
+							</header>
+							<div class="filter-content collapse show" id="collapse1" style="">
+								<ol>
+									<li>Click on shop local to visit our Ecommerce gallery</li>
+									<li>Add the products you want purchased to your shopping cart</li>
+									<li>submit order and checkout</li>
+									<li>You can pay by Card, Mobile money or pay upon delivery</li>
+								</ol>
+							</div> <!-- collapse -filter-content  .// -->
+						</article>
+						<article class="list-group-item">
+							<header class="filter-header">
+								<a href="#" data-toggle="collapse" data-target="#collapse3" class="collapsed" aria-expanded="false">
+									<i class="icon-action fa fa-chevron-down"></i>
+									<h6 class="title">Benefits</h6>
+								</a>
+							</header>
+							<div class="filter-content collapse" id="collapse3" style="">
+								<ol>
+									<li>We buy you the best products on the market at super prices</li>
+									<li>Free normal delivery within 7 hours</li>
+									<li>GHC 10 - 15 for express delivery within 2 hrs</li>
+								</ol>
+							</div>
+						</article>
+						<article class="list-group-item">
+							<header class="filter-header">
+								<a href="#" data-toggle="collapse" data-target="#importantPoints" class="collapsed" aria-expanded="false">
+									<i class="icon-action fa fa-chevron-down"></i>
+									<h6 class="title">Important Points</h6>
+								</a>
+							</header>
+							<div class="filter-content collapse" id="importantPoints" style="">
+								<ol>
+									<li>You may be required to pay for the items on your shopping list before purchase</li>
+									<li>Full payment will be required before package handover</li>
+									<li>Cancelling order after delivery process has commenced comes at a cost</li>
+									<li>Refunds to customers will be paid minus merchant transfer fees</li>
+									<li> Shoptins requires that our users provide further specifications
+										for selected products that come in varieties. This can be done in the comment box</li>
+								</ol>
+							</div>
+						</article>
 
 					</aside> <!-- col.// -->
 				</div>

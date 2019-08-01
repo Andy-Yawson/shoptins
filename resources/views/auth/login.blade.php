@@ -4,26 +4,43 @@
     <!-- ========================= SECTION INTRO ========================= -->
     <section class="section-intro text-white text-center">
         <div class="container d-flex flex-column mt-5 mb-5">
+            @if($errors->all())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </div>
+            @endif
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
                         <article class="card-body">
                             <h4 class="card-title mb-4 mt-1 black">Sign in</h4>
-                            <p>
+                            {{--<p>
                                 <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i> &nbsp; Login via Twitter</a>
                                 <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i> &nbsp; Login via facebook</a>
                             </p>
-                            <hr>
+                            <hr>--}}
                             <form method="post" action="{{ route('login') }}">
                                 {{ csrf_field() }}
-                                <div class="form-group input-icon">
+                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} input-icon">
                                     <i class="fa fa-user"></i>
                                     <input name="email" class="form-control" placeholder="Email or login email"
-                                           type="email">
+                                           type="email" value="{{ old('email') }}">
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
                                 </div> <!-- form-group// -->
                                 <div class="form-group input-icon">
                                     <i class="fa fa-lock"></i>
                                     <input class="form-control" placeholder="******" type="password" name="password">
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
                                 </div> <!-- form-group// -->
                                 <div class="row">
                                     <div class="col-md-6">
@@ -43,13 +60,6 @@
                     <div class="card">
                         <article class="card-body">
                             <h4 class="card-title mb-4 mt-1 black">Sign Up</h4>
-                            @if($errors->all())
-                                <div class="alert alert-danger">
-                                    @foreach($errors->all() as $error)
-                                        <li>{{$error}}</li>
-                                    @endforeach
-                                </div>
-                            @endif
                             <form method="post" action="{{ route('register') }}">
                                 {{ csrf_field() }}
                                 <div class="form-row">
@@ -65,6 +75,11 @@
                                 <div class="form-group">
                                     <input type="email" class="form-control" placeholder="Email Address"
                                     name="email">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="Phone Number"
+                                    name="phone" min="1">
                                 </div>
 
                                 <div class="form-group">

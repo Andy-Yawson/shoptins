@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\International;
+use App\InternationalOrder;
 use App\Manufacture;
 use App\MoreImage;
 use App\Product;
@@ -10,10 +12,12 @@ use App\Review;
 use App\Shop;
 use App\Slider;
 use App\User;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -29,7 +33,7 @@ class HomeController extends Controller
             'get_product_details','show_product_by_manufacture','contact',
                 'postContact','privacyPolicy',
             'termsCondition','show_product_by_shops','userRedirect','userCallback',
-                'searchQueryResults','searchQuery']);
+                'searchQueryResults','searchQuery','home','about','internationalForm','addInternationalShopping']);
     }
 
 
@@ -62,6 +66,86 @@ class HomeController extends Controller
 
         return view('welcome',['product'=>$product,'slider'=>$slider,
                     'featured' => $featured]);
+    }
+
+    public function home(){
+        return view('home');
+    }
+
+    public function about(){
+        return view('about');
+    }
+
+    public function internationalForm(){
+        return view('international.order-form');
+    }
+
+    public function addInternationalShopping(Request $request)
+    {
+        $this->validate($request,array(
+            'link' => 'required',
+            'quantity' => 'required',
+            'weight' => 'required',
+            'origin' => 'required',
+            'destination' => 'required',
+        ));
+
+        if ($request->other == null)
+            $other = "none";
+        else
+            $other = $request->other;
+
+        if ($request->shopper_assist ==  null)
+            $shopper_assist = 0;
+        else
+            $shopper_assist = 1;
+
+        if ($request->self_shopper == null)
+            $self_shopper = 0;
+        else
+            $self_shopper = 1;
+
+        if ($request->address == null)
+            $address = "none";
+        else
+            $address = $request->address;
+
+        if (!Session::has('code')){
+            $order_code = substr(sha1(time()),0,6);
+            Session::put('code',$order_code);
+        }
+        $international = new International();
+        $international->link = $request->link;
+        $international->quantity = $request->quantity;
+        $international->weight = $request->weight;
+        $international->origin = $request->origin;
+        $international->destination = $request->destination;
+        $international->other = $other;
+        $international->shopper_assist = $shopper_assist;
+        $international->self_shopper = $self_shopper;
+        $international->address = $address;
+        $international->code = Session::get('code');
+
+        $international->save();
+
+
+        return redirect()->route('user.int.order')
+            ->with('success','product added successfully');
+    }
+
+    public function placeInternationalOrder(){
+        International::where('code',Session::get('code'))
+            ->update(['user_id'=>\auth()->user()->id]);
+        $code = Session::get('code');
+
+        InternationalOrder::create([
+            'order_code' => $code,
+            'customer_id' => \auth()->user()->id,
+            'status' => 0
+        ]);
+
+        Session::forget('code');
+        return redirect()->route('user.confirm')->with('code',$code);
     }
 
     public function viewShop(){
@@ -129,8 +213,7 @@ class HomeController extends Controller
         $product =$product = DB::table('tbl_products')
             ->join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
             ->join('tbl_manufacture','tbl_products.manufacture_id','=','tbl_manufacture.manufacture_id')
-            ->join('tbl_shop','tbl_products.shop_id','=','tbl_shop.shop_id')
-            ->select('tbl_products.*','tbl_category.category_name','tbl_manufacture.manufacture_name','tbl_shop.shop_name','tbl_shop.shop_id')
+            ->select('tbl_products.*','tbl_category.category_name','tbl_manufacture.manufacture_name')
             ->where('tbl_products.product_id',$product_id)
             ->where('tbl_products.publication_status',1)
             ->first();
@@ -168,7 +251,7 @@ class HomeController extends Controller
 
         Mail::send('emails.contact',$data,function($message) use ($data){
             $message->from($data['email']);
-            $message->to('support@jaala.com');
+            $message->to('support@shoptins.com');
             $message->subject($data['subject']);
         });
 

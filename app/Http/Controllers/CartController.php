@@ -25,7 +25,6 @@ class CartController extends Controller
         $data["name"] = $product_info->product_name;
         $data["price"] = $price;
         $data["options"]["image"] = $product_info->product_image;
-        $data["options"]["shop"] = $product_info->shop_id;
         $data["options"]["product_del"] = $product_info->product_del;
         $data["options"]["product_price"] = $product_info->product_price;
 

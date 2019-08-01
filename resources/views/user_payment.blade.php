@@ -64,7 +64,7 @@
 							<h6>Home and Office Delivery</h6>
 							<p>Our agent will call you to meet terms of delivery</p>
 							<p>Your Payment Charge - <b><span style="color: orange">GH&#8373;{{ Cart::total() }}</span></b></p>
-							<p>Delivery Charge - <b><span style="color: orange">GH&#8373;12</span></b></p>
+							{{--<p>Delivery Charge - <b><span style="color: orange">GH&#8373;12</span></b></p>--}}
 						</div>
 					</div>
 				</div>
@@ -93,7 +93,7 @@
 													<li>Dial *170#</li>
 													<li>Select Pay Bills</li>
 													<li>Choose General Payment</li>
-													<li>Enter DightCode as Merchant</li>
+													<li>Enter Shoptins as Merchant</li>
 													<li>Enter amount to pay</li>
 													<li>Enter <b>{{session()->get('order_id')}}</b> as
 														reference
@@ -147,7 +147,7 @@
 												</dl>
 												<dl class="param">
 													<dt>Account Name:</dt>
-													<dd> DightCode Shop</dd>
+													<dd> Shoptins</dd>
 												</dl>
 												{{--<p>
 													<strong>Note:</strong>

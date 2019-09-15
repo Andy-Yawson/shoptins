@@ -11,6 +11,9 @@
 |
 */
 
+
+Route::get('/analytic','HomeController@analy');
+
 Route::get('/authenticate-user', 'HomeController@loginView')->name('user.login.view');
 Route::get('/', 'HomeController@home')->name('user.home');
 Route::get('/customer', 'HomeController@welcome')->name('user.welcome');
@@ -21,10 +24,10 @@ Route::post('/international-order', 'HomeController@addInternationalShopping')->
 Route::get('/place-international-order', 'HomeController@placeInternationalOrder')->name('user.int.order.place');
 
 Route::get('/shop', 'HomeController@viewShop')->name('user.shop');
-Route::get('/shop-by-category/{category_id}', 'HomeController@show_product_by_category')->name('user.shop.category');
-Route::get('/shop-by-manufacturer/{manufacture_id}', 'HomeController@show_product_by_manufacture')->name('user.shop.manufacture');
+Route::get('/shop-by-category/{category_slug}', 'HomeController@show_product_by_category')->name('user.shop.category');
+Route::get('/shop-by-manufacturer/{manufacture_slug}', 'HomeController@show_product_by_manufacture')->name('user.shop.manufacture');
 Route::get('/shop-by-online-open-stores/{shop_id}', 'HomeController@show_product_by_shops')->name('user.shop.shop');
-Route::get('/get-product-detail/{product_id}', 'HomeController@get_product_details')->name('user.shop.product.detail');
+Route::get('/get-product-detail/{slug}', 'HomeController@get_product_details')->name('user.shop.product.detail');
 Route::post('/search-results', 'HomeController@searchQuery')->name('user.search');
 Route::get('/search-results', 'HomeController@searchQueryResults')->name('user.search');
 
@@ -52,8 +55,6 @@ Route::post('/ajax-add-to-cart', 'CartController@ajaxAddToCart')->name('user.aja
 Auth::routes();
 
 //===================== Laravel Socialite routes ====================
-Route::get('login/google', 'Auth\LoginController@redirectToProvider');
-Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 
 
 

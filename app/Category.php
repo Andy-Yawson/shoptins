@@ -10,7 +10,7 @@ class Category extends Model
     public $table = "tbl_category";
 
     protected $fillable = [
-        'category_id', 'category_name', 'category_description',
+        'category_id', 'category_name', 'category_slug',
         'publication_status' , 'created_at'
     ];
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Manufacture;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ManufactureController extends Controller
 {
@@ -27,7 +28,6 @@ class ManufactureController extends Controller
     public function insertManufacture(Request $request){
         $this->validate($request,[
             'manufacture_name' => 'required|min:3',
-            'manufacture_desc' => 'required|min:3',
         ]);
         $ps = '';
         if($request->publication_status == null){
@@ -38,7 +38,7 @@ class ManufactureController extends Controller
 
         Manufacture::create([
             'manufacture_name' => $request->manufacture_name,
-            'manufacture_description' => $request->manufacture_desc,
+            'manufacture_slug' => Str::slug($request->manufacture_name),
             'publication_status' => $ps,
         ]);
 

@@ -18,8 +18,7 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
-                                <th>Category ID</th>
+                                <th>Slug</th>
                                 <th>Publication Status</th>
                                 <th>Created On</th>
                                 <th>Action</th>
@@ -28,8 +27,7 @@
                             <tfoot>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
-                                <th>Category ID</th>
+                                <th>Slug</th>
                                 <th>Publication Status</th>
                                 <th>Created On</th>
                                 <th>Action</th>
@@ -39,8 +37,7 @@
                             @foreach($manufacture as $single)
                                 <tr>
                                     <td>{{$single->manufacture_name}}</td>
-                                    <td>{{$single->manufacture_description}}</td>
-                                    <td>{{$single->manufacture_id}}</td>
+                                    <td>{{$single->manufacture_slug}}</td>
                                     <td>
                                         @if($single->publication_status == 0)
                                             <button class="btn btn-danger">Inactive</button>

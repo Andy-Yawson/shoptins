@@ -9,15 +9,15 @@ use App\Manufacture;
 use App\MoreImage;
 use App\Product;
 use App\Review;
-use App\Shop;
 use App\Slider;
 use App\User;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Analytics;
+use Spatie\Analytics\Period;
 
 class HomeController extends Controller
 {
@@ -33,7 +33,8 @@ class HomeController extends Controller
             'get_product_details','show_product_by_manufacture','contact',
                 'postContact','privacyPolicy',
             'termsCondition','show_product_by_shops','userRedirect','userCallback',
-                'searchQueryResults','searchQuery','home','about','internationalForm','addInternationalShopping']);
+                'searchQueryResults','searchQuery','home','about','internationalForm',
+                'addInternationalShopping','analy']);
     }
 
 
@@ -134,18 +135,25 @@ class HomeController extends Controller
     }
 
     public function placeInternationalOrder(){
-        International::where('code',Session::get('code'))
-            ->update(['user_id'=>\auth()->user()->id]);
-        $code = Session::get('code');
+        if (Session::has('code')){
 
-        InternationalOrder::create([
-            'order_code' => $code,
-            'customer_id' => \auth()->user()->id,
-            'status' => 0
-        ]);
+            International::where('code',Session::get('code'))
+                ->update(['user_id'=>\auth()->user()->id]);
+            $code = Session::get('code');
 
-        Session::forget('code');
-        return redirect()->route('user.confirm')->with('code',$code);
+            InternationalOrder::create([
+                'order_code' => $code,
+                'customer_id' => \auth()->user()->id,
+                'status' => 0
+            ]);
+
+            Session::forget('code');
+            return redirect()->route('user.confirm')->with('code',$code);
+
+        }else{
+            return redirect()->route('user.int.order')
+                ->with('error','You need to add at least one item');
+        }
     }
 
     public function viewShop(){
@@ -177,11 +185,11 @@ class HomeController extends Controller
             'manufacture'=>$manufacture,'categories'=>$category]);
     }
 
-    public function show_product_by_category($category_id){
+    public function show_product_by_category($category_slug){
         $product = DB::table('tbl_products')
             ->join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
             ->select('tbl_products.*','tbl_category.category_name')
-            ->where('tbl_category.category_id',$category_id)
+            ->where('tbl_category.category_slug',$category_slug)
             ->where('tbl_products.publication_status',1)
             ->limit(18)
             ->paginate(9);
@@ -192,13 +200,13 @@ class HomeController extends Controller
             'manufacture'=>$manufacture,'categories'=>$category]);
     }
 
-    public function show_product_by_manufacture($manufacture_id){
+    public function show_product_by_manufacture($manufacture_slug){
         $category = Category::all();
         $product =$product = DB::table('tbl_products')
             ->join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
             ->join('tbl_manufacture','tbl_products.manufacture_id','=','tbl_manufacture.manufacture_id')
             ->select('tbl_products.*','tbl_category.category_name','tbl_manufacture.manufacture_name')
-            ->where('tbl_manufacture.manufacture_id',$manufacture_id)
+            ->where('tbl_manufacture.manufacture_slug',$manufacture_slug)
             ->where('tbl_products.publication_status',1)
             ->limit(18)
             ->paginate(9);
@@ -208,23 +216,24 @@ class HomeController extends Controller
             'manufacture'=>$manufacture,'categories'=>$category]);
     }
 
-    public function get_product_details($product_id){
+    public function get_product_details($slug){
 
-        $product =$product = DB::table('tbl_products')
+        $product = DB::table('tbl_products')
             ->join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
             ->join('tbl_manufacture','tbl_products.manufacture_id','=','tbl_manufacture.manufacture_id')
             ->select('tbl_products.*','tbl_category.category_name','tbl_manufacture.manufacture_name')
-            ->where('tbl_products.product_id',$product_id)
+            ->where('tbl_products.slug',$slug)
             ->where('tbl_products.publication_status',1)
             ->first();
 
         $otherProduct = DB::table('tbl_products')->where([
-            ['product_id', '!=', $product_id], ['category_id','=', $product->category_id]
+            ['slug', '!=', $slug], ['category_id','=', $product->category_id]
         ])->take(4)->inRandomOrder()->get();
         $category = Category::all();
-        $reviews = Review::where('product_id','=',$product_id)->get();
+        $prod = Product::where('slug',$slug)->first();
+        $reviews = Review::where('product_id','=',$prod->product_id)->get();
 
-        $moreImages = MoreImage::where('product_id','=',$product_id)->get();
+        $moreImages = MoreImage::where('product_id','=',$prod->product_id)->get();
 
         return view('product_details',['product'=>$product,'others'=>$otherProduct,
             'categories'=>$category,'moreImages'=>$moreImages,'reviews'=>$reviews]);
@@ -288,6 +297,18 @@ class HomeController extends Controller
             ->paginate(12);
 
         return view('search',['results'=>$results]);
+    }
+
+    public function analy(){
+        $analyticsData = Analytics::performQuery(
+            Period::years(1),
+            'ga:sessions',
+            [
+                'metrics' => 'ga:sessions, ga:pageviews',
+                'dimensions' => 'ga:yearMonth'
+            ]
+        );
+
     }
 
 }

@@ -18,8 +18,7 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
-                                <th>Category ID</th>
+                                <th>Slug</th>
                                 <th>Publication Status</th>
                                 <th>Created At</th>
                                 <th>Action</th>
@@ -28,8 +27,7 @@
                             <tfoot>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
-                                <th>Category ID</th>
+                                <th>Slug</th>
                                 <th>Publication Status</th>
                                 <th>Created On</th>
                                 <th>Action</th>
@@ -39,8 +37,7 @@
                             @foreach($categories as $category)
                                 <tr>
                                     <td>{{$category->category_name}}</td>
-                                    <td>{{$category->category_description}}</td>
-                                    <td>{{$category->category_id}}</td>
+                                    <td>{{$category->category_slug}}</td>
                                     <td>
                                         @if($category->publication_status == 0)
                                             <button class="btn btn-danger">Inactive</button>

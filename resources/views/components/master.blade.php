@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Dashboard</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.8704dbd.png') }}">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
@@ -246,6 +247,7 @@
                             <li><a href="{{route('admin.view.product')}}">View Products</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle" href="javascript:void(0);">
                         <span class="icon-holder">
@@ -309,11 +311,6 @@
                                     <span>Profile</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                                    <i class="ti-email fa fa-envelope-o"></i>
-                                    <span>Messages</span></a>
-                                </li>
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a href="{{route('admin.logout')}}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">

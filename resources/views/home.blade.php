@@ -9,12 +9,13 @@
 	<meta name="author" content="">
 
 	<title>Shoptins | Choose</title>
-
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.8704dbd.png') }}">
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
 	<!-- Theme CSS - Includes Bootstrap -->
+	<link href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.css')}}" rel="stylesheet">
 	<link href="{{asset('first/css/creative.min.css')}}" rel="stylesheet">
 	<style>
 			ul.logo li{
@@ -50,7 +51,6 @@
 		</div>
 	</div>
 </header>
-
 
 </body>
 </html>

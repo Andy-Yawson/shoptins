@@ -29,10 +29,7 @@
                                                 aria-describedby="emailHelp" placeholder="Enter category name" name="category_name">
                                         <small id="emailHelp" class="form-text text-muted">Category is always unique</small>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Category Description</label>
-                                        <textarea class="form-control" rows="6" name="category_desc"></textarea>
-                                    </div>
+
                                     <div class="checkbox checkbox-circle checkbox-info peers ai-c mB-15">
                                         <input type="checkbox" id="inputCall1" name="publication_status" class="peer" value="1">
                                         <label for="inputCall1" class="peers peer-greed js-sb ai-c">

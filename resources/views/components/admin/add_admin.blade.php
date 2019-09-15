@@ -42,7 +42,6 @@
                                             <option>Choose...</option>
                                             <option value="0">Super Administrator</option>
                                             <option value="1">Administrator</option>
-                                            <option value="2">Shop Owner</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

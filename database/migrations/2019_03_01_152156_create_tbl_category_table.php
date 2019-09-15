@@ -16,7 +16,7 @@ class CreateTblCategoryTable extends Migration
         Schema::create('tbl_category', function (Blueprint $table) {
             $table->increments('category_id');
             $table->string('category_name');
-            $table->string('category_description');
+            $table->string('category_slug');
             $table->integer('publication_status');
             $table->timestamps();
         });

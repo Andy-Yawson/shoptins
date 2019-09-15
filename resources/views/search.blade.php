@@ -30,7 +30,7 @@
                                             </div>
                                             <figcaption class="p-3">
                                                 <h6 class="title">
-                                                    <a href="{{route('user.shop.product.detail',$item->product_id)}}">
+                                                    <a href="{{route('user.shop.product.detail',$item->slug)}}">
                                                         {{$item->product_name}}
                                                     </a>
                                                 </h6>

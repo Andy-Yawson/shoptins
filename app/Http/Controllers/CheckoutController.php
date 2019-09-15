@@ -18,7 +18,7 @@ class CheckoutController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['checkout']);
+        $this->middleware('auth')->except(['']);
     }
 
     public function checkout(){

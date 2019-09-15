@@ -100,6 +100,16 @@
                                         </label>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <div class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                        <input type="checkbox" id="inputFeature" name="featured" class="peer" value="1">
+                                        <label for="inputFeature" class="peers peer-greed js-sb ai-c">
+                                            <span class="peer peer-greed">Featured</span>
+                                        </label>
+                                    </div>
+                                </div>
+
                                 <button type="submit" class="btn btn-primary">Add Product</button>
                                 </form>
                         </div>

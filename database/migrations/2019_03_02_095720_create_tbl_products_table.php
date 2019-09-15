@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblProductsTable extends Migration
+class
+CreateTblProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,6 +30,7 @@ class CreateTblProductsTable extends Migration
             $table->integer('stock');
             $table->integer('feature');
             $table->float('rating');
+            $table->string('slug');
             $table->timestamps();
         });
     }

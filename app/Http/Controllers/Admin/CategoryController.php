@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller{
 
@@ -27,7 +28,6 @@ class CategoryController extends Controller{
     public function insertCategory(Request $request){
         $this->validate($request,[
             'category_name' => 'required|min:3',
-            'category_desc' => 'required|min:3',
         ]);
         $ps = '';
         if($request->publication_status == null){
@@ -38,7 +38,7 @@ class CategoryController extends Controller{
 
         Category::create([
             'category_name' => $request->category_name,
-            'category_description' => $request->category_desc,
+            'category_slug' => Str::slug($request->category_name),
             'publication_status' => $ps,
         ]);
 

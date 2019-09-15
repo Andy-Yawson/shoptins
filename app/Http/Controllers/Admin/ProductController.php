@@ -7,12 +7,11 @@ use App\LogProduct;
 use App\Manufacture;
 use App\MoreImage;
 use App\Product;
-use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Mews\Purifier\Purifier;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -48,7 +47,7 @@ class ProductController extends Controller
         $new_name = uniqid(rand()) . "." . $image->getClientOriginalExtension();
         $image->move(public_path("images/product_images"),$new_name);
 
-        $ps = '';
+
         if($request->publication_status == null){
             $ps = 0;
         }else{
@@ -59,8 +58,8 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->manufacture_id = $request->manufacture_id;
         $product->product_name = $request->product_name;
-        $product->product_short_description = clean($request->product_short_desc);
-        $product->product_long_description = clean($request->product_long_desc);
+        $product->product_short_description = $request->product_short_desc;
+        $product->product_long_description = $request->product_long_desc;
         $product->product_price = $request->product_price;
         $product->product_image = $new_name;
         $product->product_size = $request->product_size;
@@ -70,6 +69,8 @@ class ProductController extends Controller
         $product->feature = 0;
         $product->rating = 0;
         $product->product_del = $request->product_del;
+        $product->slug = Str::slug($request->product_name);
+        $product->feature = $request->featured == null ? 0 : 1;
         $product->save();
 
 
@@ -169,8 +170,8 @@ class ProductController extends Controller
         $feat = $request->feature == null ? 0 : 1;
         Product::where('product_id','=',$request->product_id)
             ->update(['product_name' => $request->product_name,
-                    'product_short_description' => clean($request->product_short_description),
-                    'product_long_description' => clean($request->product_long_description),
+                    'product_short_description' => $request->product_short_description,
+                    'product_long_description' => $request->product_long_description,
                     'product_price' => $request->product_price,
                     'product_del' => $request->product_del,
                     'category_id' =>$category_id,

@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://shoptins.com/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -162,9 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
-        Mews\Purifier\PurifierServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,10 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
-        'Purifier' => Mews\Purifier\Facades\Purifier::class,
-
     ],
 
 ];

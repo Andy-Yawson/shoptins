@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
@@ -24,12 +24,15 @@ class CartController extends Controller
         $data["id"] = $product_info->product_id;
         $data["name"] = $product_info->product_name;
         $data["price"] = $price;
+        $data["weight"] = 0;
         $data["options"]["image"] = $product_info->product_image;
         $data["options"]["product_del"] = $product_info->product_del;
         $data["options"]["product_price"] = $product_info->product_price;
 
         Cart::add($data);
-        return count(Cart::content());
+        /*Cart::add(['id' => '293ad', 'name' => 'Product 1', 'qty' => 1, 'price' => 9.99, 'weight' => 550,
+            'options' => ['image' => 'large.png']]);*/
+        return Cart::content()->count();
     }
 
     public function add_to_cart(Request $request){

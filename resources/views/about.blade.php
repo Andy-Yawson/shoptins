@@ -13,7 +13,7 @@
                             About Us!
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">We glad to welcome youche</h5>
+                            <h5 class="card-title">We glad to welcome you!</h5>
                             <p class="card-text">
                                 Shoptins is here to to take on your shopping needs. From the comfort of
                                 your mobile phone you can shop from local and international stores and have

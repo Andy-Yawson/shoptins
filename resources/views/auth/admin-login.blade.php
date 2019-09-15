@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.8704dbd.png') }}">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Admin Login</title>
     <style>#loader{transition:all .3s ease-in-out;opacity:1;visibility:visible;position:fixed;height:100vh;width:100%;background:#fff;z-index:90000}#loader.fadeOut{opacity:0;visibility:hidden}.spinner{width:40px;height:40px;position:absolute;top:calc(50% - 20px);left:calc(50% - 20px);background-color:#333;border-radius:100%;-webkit-animation:sk-scaleout 1s infinite ease-in-out;animation:sk-scaleout 1s infinite ease-in-out}@-webkit-keyframes sk-scaleout{0%{-webkit-transform:scale(0)}100%{-webkit-transform:scale(1);opacity:0}}@keyframes sk-scaleout{0%{-webkit-transform:scale(0);transform:scale(0)}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0}}
@@ -56,9 +57,7 @@
                 <div class="peers ai-c jc-sb fxw-nw">
                     <div class="peer">
                         <div class="checkbox checkbox-circle checkbox-info peers ai-c">
-                            
-                                <span class="peer peer-greed"><a href="{{ route('admin.password.request') }}">Forgot Password?</a></span>
-                            
+{{--                                <span class="peer peer-greed"><a href="{{ route('admin.password.request') }}">Forgot Password?</a></span>--}}
                         </div>
                     </div>
                     <div class="peer">

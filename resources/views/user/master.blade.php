@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Bootstrap-ecommerce by Andrews Yawson">
+    <meta name="author" content="Shoptins E-commerce by Andrews Quarcoo">
 
     <title>Shoptins</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.8704dbd.png') }}">
 
     <link href="{{ asset('home/css/main.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('home/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
@@ -33,16 +33,16 @@
 
             <div class="collapse navbar-collapse" id="navbarsExample07">
                 <ul class="navbar-nav mr-auto">
-                    <li><a href="#" class="nav-link"> <i class="fab fa-facebook"></i> </a></li>
-                    <li><a href="#" class="nav-link"> <i class="fab fa-instagram"></i> </a></li>
-                    <li><a href="#" class="nav-link"> <i class="fab fa-twitter"></i> </a></li>
+                    <li><a href="https://www.facebook.com/ShoptinsGlobal/" class="nav-link"> <i class="fab fa-facebook"></i> </a></li>
+                    <li><a href="https://www.instagram.com/Shoptins_Global/" class="nav-link"> <i class="fab fa-instagram"></i> </a></li>
+                    <li><a href="https://www.twitter.com/ShoptinsGlobal/" class="nav-link"> <i class="fab fa-twitter"></i> </a></li>
+                    <li><a href="https://wa.me/+233267960819" target="_blank" class="nav-link"><i class="fab fa-whatsapp"></i></a></li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a href="{{ route('user.welcome') }}" class="nav-link"> Home </a></li>
+                    <li class="nav-item"><a href="{{ url('/') }}" class="nav-link"> Home </a></li>
                     <li class="nav-item"><a href="{{ route('user.shop') }}" class="nav-link"> Shop </a></li>
                     <li class="nav-item"><a href="{{ route('user.contact') }}" class="nav-link"> Contact Us</a></li>
                     <li class="nav-item"><a href="{{ route('user.about') }}" class="nav-link"> About Us</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
                 </ul> <!-- navbar-nav.// -->
             </div> <!-- collapse.// -->
         </div>
@@ -53,8 +53,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-sm-4">
                     <div class="">
-                        <img class="logo" src="{{ asset('images/logo.8704dbd.png') }}"
-                        width="130px" height="50px">
+                        <a href="{{ url('/customer') }}">
+                            <img class="logo" src="{{ asset('images/logo.8704dbd.png') }}"
+                                 width="130px" height="50px">
+                        </a>
                     </div> <!-- brand-wrap.// -->
                 </div>
                 <div class="col-lg-4 col-xl-5 col-sm-8">
@@ -80,7 +82,7 @@
                                 </div>
                                 <div class="text-wrap">
                                     <span class="small badge badge-danger" id="cart-badge">
-                                        {{count(\Gloudemans\Shoppingcart\Facades\Cart::content())}}
+                                        {{ Cart::content()->count() }}
                                     </span>
                                     <div class="shopping-cart-text">Cart</div>
                                 </div>
@@ -112,8 +114,8 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#"><i class="fa fa-heart"></i> WishList</a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-database"></i> History</a>
+                                    {{--<a class="dropdown-item" href="#"><i class="fa fa-heart"></i> WishList</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-database"></i> History</a>--}}
                                     <a class="dropdown-item" href="{{ route('user.logout') }}"><i class="fa fa-power-off"></i> Logout</a>
                                 </div> <!--  dropdown-menu .// -->
                             </div>  <!-- widget-header .// -->
@@ -137,8 +139,7 @@
                 <aside class="col-sm-12 col-lg-3 col-xs-12 col-md-3 white">
                     <h5 class="title">Customer Services</h5>
                     <ul class="list-unstyled footer-li">
-                        <li> <a href="#">Help center</a></li>
-                        <li> <a href="#">Money refund</a></li>
+                        <li> <a href="{{ route('user.about') }}">Help center</a></li>
                         <li> <a href="{{ route('user.terms') }}">Terms and Conditions</a></li>
                     </ul>
                 </aside>
@@ -151,11 +152,11 @@
                     </ul>
                 </aside>
                 <aside class="col-sm-12 col-lg-3 col-xs-12  col-md-3 white">
-                    <h5 class="title">About</h5>
+                    <h5 class="title">More Links</h5>
                     <ul class="list-unstyled footer-li">
-                        <li> <a href="#"> Our history </a></li>
-                        <li> <a href="#"> How to buy </a></li>
-                        <li> <a href="#"> Delivery and payment </a></li>
+                        <li> <a href="{{ route('user.shop') }}"> Our Shop </a></li>
+                        <li> <a href="{{ route('user.contact') }}"> Contact Us </a></li>
+                        <li> <a href="{{ route('user.shop.show.cart') }}"> Shopping Cart </a></li>
                     </ul>
                 </aside>
                 <aside class="col-sm-12 col-lg-3 col-xs-12">
@@ -168,10 +169,17 @@
                         </p>
 
                         <div class="btn-group white social-links-footer">
-                            <a class="btn btn-facebook" title="Facebook" target="_blank" href="#"><i class="fab fa-facebook-f  fa-fw"></i></a>
-                            <a class="btn btn-instagram" title="Instagram" target="_blank" href="#"><i class="fab fa-instagram  fa-fw"></i></a>
-                            <a class="btn btn-youtube" title="Youtube" target="_blank" href="#"><i class="fab fa-youtube  fa-fw"></i></a>
-                            <a class="btn btn-twitter" title="Twitter" target="_blank" href="#"><i class="fab fa-twitter  fa-fw"></i></a>
+                            <a class="btn btn-facebook" title="Facebook" target="_blank" href="https://www.facebook.com/ShoptinsGlobal/">
+                                <i class="fab fa-facebook-f  fa-fw"></i>
+                            </a>
+                            <a class="btn btn-instagram" title="Instagram" target="_blank" href="https://www.instagram.com/Shoptins_Global/">
+                                <i class="fab fa-instagram  fa-fw"></i>
+                            </a>
+                            <a class="btn btn-success" title="WhatsApp" href="https://wa.me/+233267960819" target="_blank"><i class="fab fa-whatsapp  fa-fw"></i></a>
+
+                            <a class="btn btn-twitter" title="Twitter" target="_blank" href="https://www.twitter.com/ShoptinsGlobal/">
+                                <i class="fab fa-twitter  fa-fw"></i>
+                            </a>
                         </div>
                     </article>
                 </aside>
@@ -181,7 +189,7 @@
         <section class="footer-bottom row">
             <div class="col-lg-12 footer-copyright" align="center">
                 <p>
-                    Copyright &copy; 2019 Shoptins
+                    Copyright &copy; {{ date('Y') }} Shoptins. All right reserved
                 </p>
             </div>
         </section> <!-- //footer-top -->

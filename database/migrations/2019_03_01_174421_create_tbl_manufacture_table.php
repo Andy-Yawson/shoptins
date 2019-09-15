@@ -16,7 +16,7 @@ class CreateTblManufactureTable extends Migration
         Schema::create('tbl_manufacture', function (Blueprint $table) {
             $table->increments('manufacture_id');
             $table->string('manufacture_name');
-            $table->string('manufacture_description');
+            $table->string('manufacture_slug');
             $table->integer('publication_status');
             $table->timestamps();
         });

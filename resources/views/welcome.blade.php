@@ -17,7 +17,7 @@
                         <?php $categories = \App\Category::orderBy('created_at','asc')->limit(7)->get(); ?>
                         @foreach($categories as $category)
                             <li>
-                                <a href="{{route('user.shop.category',$category->category_id)}}">
+                                <a href="{{route('user.shop.category',$category->category_slug)}}">
                                     {{$category->category_name}}
                                 </a>
                             </li>
@@ -58,65 +58,53 @@
 
 <!--============== Item Side ===================-->
 <section class="section-content padding-y bg">
-    <div class="container">
-        <div id="code_itemside_round">
-            <div class="row">
-                <div class="col-md-4">
-                    <article class="box">
-                        <figure class="itemside">
-                            <div class="aside align-self-center">
-					<span class="icon-wrap icon-md round bg-warning">
-						<i class="fa fa-lightbulb white"></i>
-					</span>
-                            </div>
-                            <figcaption class="text-wrap">
-                                <h5 class="title">Sync across all devices</h5>
-                                <p class="text-muted">
-                                    Access Shoptins via any platform and still get the same taste of easy shopping
-                                </p>
-                            </figcaption>
-                        </figure> <!-- iconbox // -->
-                    </article> <!-- panel-lg.// -->
-                </div><!-- col // -->
-                <div class="col-md-4">
-                    <article class="box">
-                        <figure class="itemside">
-                            <div class="aside align-self-center">
-					<span class="icon-wrap icon-md round bg-danger">
-						<i class="fa fa-lock white"></i>
-					</span>
-                            </div>
-                            <figcaption class="text-wrap">
-                                <h5 class="title">Secured protocol</h5>
-                                <p class="text-muted">
-                                    We keep you from any threats during shopping with us, its safe.
-                                </p>
-                            </figcaption>
-                        </figure> <!-- iconbox // -->
-                    </article> <!-- panel-lg.// -->
-                </div><!-- col // -->
-                <div class="col-md-4">
-                    <article class="box">
-                        <figure class="itemside">
-                            <div class="aside align-self-center">
-					<span class="icon-wrap icon-md round bg-success">
-						<i class="fa fa-credit-card white"></i>
-					</span>
-                            </div>
-                            <figcaption class="text-wrap">
-                                <h5 class="title">Secured Payment</h5>
-                                <p class="text-muted">
-                                    Our payment is made easy and secured with problems at all.
-                                </p>
-                            </figcaption>
-                        </figure> <!-- iconbox // -->
-                    </article> <!-- panel-lg.// -->
-                </div><!-- col // -->
-            </div> <!-- row.// -->
-        </div> <!-- code-wrap.// -->
-    </div>
+	<div class="container">
+		<div id="code_itemside_round">
+			<div class="row">
+				<div class="col-md-6">
+					<article class="list-group-item">
+						<header class="filter-header">
+							<a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" class="collapsed">
+								<i class="icon-action fa fa-chevron-down"></i>
+								<h6 class="title">Benefits </h6>
+							</a>
+						</header>
+						<div class="filter-content collapse" id="collapse1" style="">
+							<ol>
+								<li>We buy you the best products on the market at super prices</li>
+								<li>Free  normal delivery within 7 hours</li>
+								<li>GHC 10 -15 for express delivery within 2 hrs</li>
+							</ol>
+						</div> <!-- collapse -filter-content  .// -->
+					</article>
+				</div><!-- col // -->
+				<div class="col-md-6">
+					<article class="list-group-item">
+						<header class="filter-header">
+							<a href="#" data-toggle="collapse" data-target="#importantPoints" aria-expanded="true" class="collapsed">
+								<i class="icon-action fa fa-chevron-down"></i>
+								<h6 class="title">Important points</h6>
+							</a>
+						</header>
+						<div class="filter-content collapse" id="importantPoints" style="">
+							<ol>
+								<li>You may be required to pay for the items on your shopping list before purchase</li>
+								<li> Full payment will be required before package handover</li>
+								<li>Cancelling order after delivery process has commenced comes at a cost</li>
+								<li> Refunds to customers will be paid minus merchant transfer fees</li>
+								<li>Shoptins requires that our users provide further specifications for selected products that come in varieties. This can be done in the comment box</li>
+								<li>The Shoptins service cannot be used to purchase any illegal items</li>
+							</ol>
+						</div> <!-- collapse -filter-content  .// -->
+					</article>
+				</div><!-- col // -->
+
+			</div> <!-- row.// -->
+		</div> <!-- code-wrap.// -->
+	</div>
 </section>
 <!--============== Item Side End===================-->
+
 
 <!-- ========================= SECTION LATEST CONTENT ========================= -->
 <section class="section-content padding-y bg">
@@ -141,7 +129,7 @@
                                     </div>
                                     <figcaption class="p-3">
                                         <h6 class="title">
-                                            <a href="{{route('user.shop.product.detail',$item->product_id)}}">
+                                            <a href="{{route('user.shop.product.detail',$item->slug)}}">
                                                 {{$item->product_name}}
                                             </a>
                                         </h6>
@@ -190,7 +178,7 @@
                                     </div>
                                     <figcaption class="p-3">
                                         <h6 class="title">
-                                            <a href="{{route('user.shop.product.detail',$item->product_id)}}">
+                                            <a href="{{route('user.shop.product.detail',$item->slug)}}">
                                                 {{$item->product_name}}
                                             </a>
                                         </h6>
@@ -214,59 +202,6 @@
 </section>
 <!-- ========================= SECTION FEATURED CONTENT END// ========================= -->
 
-<!-- ===================== SECTION MORE ADS ================-->
-<section class="section-content padding-y bg">
-    <div class="container">
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="row mb-4">
-
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <figure class="itemside">
-                            <div class="aside">
-                                <span class="icon-wrap rounded icon-sm white bg-primary"><i class="fa fa-coffee"></i></span>
-                            </div>
-                            <figcaption class="text-wrap">
-                                <h5 class="title">Bright Shopping</h5>
-                                <p>
-                                    Get access to all categories of your choice for efficient shopping.
-                                </p>
-                            </figcaption>
-                        </figure> <!-- iconbox // -->
-                    </div><!-- col // -->
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <figure class="itemside">
-                            <div class="aside">
-                                <span class="icon-wrap rounded icon-sm white bg-primary"><i class="fa fa-lightbulb"></i></span>
-                            </div>
-                            <figcaption class="text-wrap">
-                                <h5 class="title">Creative Strategy</h5>
-                                <p>
-                                    We care about you, so prices are well affordable as a standard market price.
-                                </p>
-                            </figcaption>
-                        </figure> <!-- iconbox // -->
-                    </div><!-- col // -->
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <figure class="itemside">
-                            <div class="aside">
-                                <span class="icon-wrap rounded icon-sm white bg-primary"><i class="fa fa-building"></i></span>
-                            </div>
-                            <figcaption class="text-wrap">
-                                <h5 class="title">Find Us</h5>
-                                <p>
-                                    5th Floor Ghana Multimedia Center <br> High Street Accra
-                                </p>
-                            </figcaption>
-                        </figure> <!-- iconbox // -->
-                    </div> <!-- col // -->
-
-                </div> <!-- row.// -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ===================== SECTION MORE ADS END================-->
 
 
 @endsection

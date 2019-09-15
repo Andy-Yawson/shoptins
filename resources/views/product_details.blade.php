@@ -256,7 +256,7 @@
 												<h4 class="title">{{$item->product_name}}</h4>
 											</figcaption>
 											<div class="bottom-wrap">
-												<a href="{{route('user.shop.product.detail',$item->product_id)}}"
+												<a href="{{route('user.shop.product.detail',$item->slug)}}"
 												   class="btn btn-sm btn-primary float-right">Order Now</a>
 												<div class="price-wrap h5">
 													@if($item->product_del > 0)
@@ -404,7 +404,6 @@
 
 				var product_id = $('#product_id').val();
 				var qty = $('#qty').val();
-
                 $.ajax({
                     type:'POST',
                     url:'{{route("user.ajax.add")}}',

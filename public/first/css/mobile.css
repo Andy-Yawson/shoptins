@@ -1,0 +1,16 @@
+#mobile-view-show{
+   display:none;
+}
+
+@media only screen and (max-width: 600px){
+    
+    ul.logo{margin-left:-50px;}
+    
+    #mobile-view-hide{
+        display:none;
+    }
+    
+    #mobile-view-show{
+        display:block;
+    }
+}

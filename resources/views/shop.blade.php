@@ -28,7 +28,7 @@
                                 <ul class="list-unstyled list-lg">
                                     @foreach($category as $menu)
                                         <li>
-                                            <a href="{{route('user.shop.category',$menu->category_id)}}">
+                                            <a href="{{route('user.shop.category',$menu->category_slug)}}">
                                                 {{$menu->category_name}}
                                                 <span class="float-right badge badge-light round">{{
                                                 \App\Product::where('category_id',$menu->category_id)->count()
@@ -83,7 +83,7 @@
                                             </div>
                                             <figcaption class="p-3">
                                                 <h6 class="title">
-                                                    <a href="{{route('user.shop.product.detail',$item->product_id)}}">
+                                                    <a href="{{route('user.shop.product.detail',$item->slug)}}">
                                                         {{$item->product_name}}
                                                     </a>
                                                 </h6>

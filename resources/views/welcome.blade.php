@@ -14,7 +14,7 @@
                         Categories
                     </header>
                     <ul class="menu-category">
-                        <?php $categories = \App\Category::orderBy('created_at','asc')->limit(7)->get(); ?>
+                        <?php $categories = \App\Category::orderBy('created_at','asc')->limit(6)->get(); ?>
                         @foreach($categories as $category)
                             <li>
                                 <a href="{{route('user.shop.category',$category->category_slug)}}">
@@ -24,8 +24,8 @@
                         @endforeach
                         <li><a href="{{route('user.shop')}}">Show All Categories</a></li>
                     </ul>
-                </div> <!-- card.// -->
-            </aside> <!-- col.// -->
+                </div>
+            </aside>
             <div class="col-md-9">
                 <div id="carousel2_indicator" class="carousel slide carousel-fade" data-ride="carousel">
                     <div class="carousel-inner">

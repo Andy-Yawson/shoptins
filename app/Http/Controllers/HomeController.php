@@ -7,14 +7,17 @@ use App\International;
 use App\InternationalOrder;
 use App\Manufacture;
 use App\MoreImage;
+use App\Order;
 use App\Product;
 use App\Review;
+use App\Shipping;
 use App\Slider;
 use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Analytics;
 use Spatie\Analytics\Period;
@@ -309,6 +312,107 @@ class HomeController extends Controller
             ]
         );
 
+    }
+
+    public function myAccountOrders(){
+        $all_orders = DB::table('tbl_order')
+            ->join('tbl_payment','tbl_order.payment_id','=','tbl_payment.payment_id')
+            ->select('tbl_order.*','tbl_payment.payment_method','tbl_payment.payment_status')
+            ->orderBy('order_id','desc')
+            ->where('tbl_order.customer_id',\auth()->user()->id)
+            ->get();
+        return view('user.account.orders',['orders'=>$all_orders]);
+    }
+
+    public function myAccountOrderDetail($id){
+        $order_details = DB::table('tbl_order')
+            ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
+            ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
+            ->where('tbl_order.order_id',$id)
+            ->where('tbl_order.customer_id',\auth()->user()->id)
+            ->select('tbl_order.*','tbl_order_details.*','tbl_shipping.*')
+            ->get();
+        return view('user.account.detail', ['order_detail' => $order_details]);
+    }
+
+    public function declineOrder($id){
+        Order::where('order_id','=',$id)
+            ->update(['order_status' => 3]);
+
+        return redirect(route('user.account.orders'))
+            ->with('status','Order was declined successfully. Thank you!');
+    }
+
+    public function replaceOrder($id){
+        Order::where('order_id','=',$id)
+            ->update(['order_status' => 0]);
+
+        return redirect(route('user.account.orders'))
+            ->with('status','Order was replaced successfully. Thank you!');
+    }
+
+    public function changePassword(){
+        return view('user.account.password');
+    }
+
+    public function configurePassword(Request $request){
+
+        $user = Auth::user();
+        $oldPassword = $request->old_password;
+        $newPassword = $request->password;
+        if ($newPassword == $request->confirm_password){
+
+            if (Hash::check($oldPassword,$user->password)){
+                request()->user()->fill([
+                    'password' => Hash::make($newPassword)
+                ])->save();
+                return redirect()->route('user.change.password')
+                    ->with('success','password changed successfully!');
+            }else{
+                return redirect()->route('user.change.password')
+                    ->with('error','Old password does not match our records!');
+            }
+        }else{
+            return redirect()->route('user.change.password')
+                ->with('error','Old password is not same as new password!');
+        }
+    }
+
+    public function changeAddress(){
+        $shipping = Shipping::where('user_id',\auth()->user()->id)->first();
+        return view('user.account.address',compact('shipping'));
+    }
+
+    public function postAddress(Request $request){
+        if($request->shipping_notes == ""){
+            $note = "none";
+        }else{
+            $note = $request->shipping_notes;
+        }
+        $check = Shipping::where('user_id',\auth()->user()->id)->first();
+        if ($check){
+            Shipping::where('user_id',\auth()->user()->id)
+                ->update([
+                    'shipping_name' => $request->shipping_name,
+                    'shipping_phone' => $request->shipping_phone,
+                    'shipping_address' => $request->shipping_address,
+                    'shipping_city' => $request->shipping_city,
+                    'shipping_email' => $request->shipping_email,
+                    'shipping_notes' => $note,
+                ]);
+        }else{
+            Shipping::create([
+                'user_id' => \auth()->user()->id,
+                'shipping_name' => $request->shipping_name,
+                'shipping_phone' => $request->shipping_phone,
+                'shipping_address' => $request->shipping_address,
+                'shipping_city' => $request->shipping_city,
+                'shipping_email' => $request->shipping_email,
+                'shipping_notes' => $note,
+            ]);
+        }
+        return redirect()->route('user.change.address')
+                ->with('success','Address details updated successfully!');
     }
 
 }

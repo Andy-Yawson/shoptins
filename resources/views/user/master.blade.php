@@ -114,6 +114,7 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="{{ route('user.account.orders') }}"><i class="fa fa-user-secret"></i> My Account</a>
                                     {{--<a class="dropdown-item" href="#"><i class="fa fa-heart"></i> WishList</a>
                                     <a class="dropdown-item" href="#"><i class="fa fa-database"></i> History</a>--}}
                                     <a class="dropdown-item" href="{{ route('user.logout') }}"><i class="fa fa-power-off"></i> Logout</a>

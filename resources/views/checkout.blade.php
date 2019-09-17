@@ -55,12 +55,12 @@
 									<div class="form-group">
 										<label for="phone">Phone <span>*</span></label>
 										<input type="text" class="form-control" id="phone" aria-describedby="phone" required
-										       name="shipping_phone" value="@if(!empty($checkout)){{$checkout->shipping_phone}}@endif">
+										       name="shipping_phone" value="@if(auth()->check()){{auth()->user()->phone}}@endif">
 									</div>
 								</div>
 								<div class="col-lg-12">
 									<div class="form-group">
-										<label for="order">Order Notes <span>*</span></label>
+										<label for="order">Order Notes</label>
 										<textarea class="form-control" id="order" rows="3"
 										          name="shipping_notes">@if(!empty($checkout)){{$checkout->shipping_notes}}@endif</textarea>
 									</div>

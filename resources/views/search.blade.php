@@ -42,6 +42,10 @@
                                                         <span class="price-new">&#8373;{{$item->product_price}}</span>
                                                     @endif
                                                 </div>
+                                                <a href="{{ route('user.shop.product.detail',$item->slug) }}" class="btn btn-primary">
+                                                    <i class="fa fa-cart-plus"></i>
+                                                    add to cart
+                                                </a>
                                             </figcaption>
                                         </figure>
                                     </div>

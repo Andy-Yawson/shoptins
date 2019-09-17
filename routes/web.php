@@ -27,7 +27,7 @@ Route::get('/shop', 'HomeController@viewShop')->name('user.shop');
 Route::get('/shop-by-category/{category_slug}', 'HomeController@show_product_by_category')->name('user.shop.category');
 Route::get('/shop-by-manufacturer/{manufacture_slug}', 'HomeController@show_product_by_manufacture')->name('user.shop.manufacture');
 Route::get('/shop-by-online-open-stores/{shop_id}', 'HomeController@show_product_by_shops')->name('user.shop.shop');
-Route::get('/get-product-detail/{slug}', 'HomeController@get_product_details')->name('user.shop.product.detail');
+Route::get('/product-detail/{slug}', 'HomeController@get_product_details')->name('user.shop.product.detail');
 Route::post('/search-results', 'HomeController@searchQuery')->name('user.search');
 Route::get('/search-results', 'HomeController@searchQueryResults')->name('user.search');
 
@@ -45,6 +45,18 @@ Route::post('/proceed-checkout', 'CheckoutController@createShipping')->name('use
 Route::get('/customer-payment', 'CheckoutController@getPayment')->name('user.payment');
 Route::post('/order-place', 'CheckoutController@orderPlace')->name('user.shop.order.place');
 Route::get('/confirmation-page', 'CheckoutController@confirmationPage')->name('user.confirm');
+
+//****================ User My Account =================****
+Route::get('/my-account/orders', 'HomeController@myAccountOrders')->name('user.account.orders');
+Route::get('/my-account/order/{id}/detail', 'HomeController@myAccountOrderDetail')->name('user.account.detail');
+Route::get('/my-account/order/{id}/decline', 'HomeController@declineOrder')->name('user.decline.order');
+Route::get('/my-account/order/{id}/replace', 'HomeController@replaceOrder')->name('user.replace.order');
+Route::get('/my-account/change-password', 'HomeController@changePassword')->name('user.change.password');
+Route::post('/my-account/change-password', 'HomeController@configurePassword')->name('user.password.change');
+Route::get('/my-account/change-address', 'HomeController@changeAddress')->name('user.change.address');
+Route::post('/my-account/change-address', 'HomeController@postAddress')->name('user.post.address');
+
+
 
 //============================== Rating and Reviews Routes ====================================
 Route::post('/create-a-review','ReviewController@insertReview')->name('user.make.review');

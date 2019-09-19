@@ -22,6 +22,7 @@ Route::get('/about-us', 'HomeController@about')->name('user.about');
 Route::get('/international-order', 'HomeController@internationalForm')->name('user.int.order');
 Route::post('/international-order', 'HomeController@addInternationalShopping')->name('user.int.place');
 Route::get('/place-international-order', 'HomeController@placeInternationalOrder')->name('user.int.order.place');
+Route::get('/clear-international-cart/{code}', 'HomeController@clearInternationalCart')->name('int.clear.cart');
 
 Route::get('/shop', 'HomeController@viewShop')->name('user.shop');
 Route::get('/shop-by-category/{category_slug}', 'HomeController@show_product_by_category')->name('user.shop.category');
@@ -144,9 +145,13 @@ Route::prefix('admin')->group(function (){
 
     //=========================================== Orders Routes ===============================================
     Route::get('/manage-orders','Admin\OrdersController@manageOrders')->name('admin.view.orders');
-    Route::get('/manage-international-orders','Admin\OrdersController@manageOrdersInt')->name('admin.view.orders.int');
     Route::get('/view-order-details/{order_details_id}','Admin\OrdersController@viewOrder')->name('admin.view.order.detail');
+
+    Route::get('/manage-international-orders','Admin\OrdersController@manageOrdersInt')->name('admin.view.orders.int');
     Route::get('/view-order-details-international/{code}','Admin\OrdersController@viewOrderInt')->name('admin.view.order.detail.int');
+    Route::get('/order-confirm-international/{code}','Admin\OrdersController@confirmOrderInt')->name('admin.order.confirm.int');
+    Route::get('/order-decline-international/{code}','Admin\OrdersController@declineOrderInt')->name('admin.order.decline.int');
+
     Route::get('/order-successfully-delivered/{id}','Admin\OrdersController@activeOrder')->name('admin.active.order');
     Route::get('/order-not-delivered/{id}','Admin\OrdersController@unactiveOrder')->name('admin.unactive.order');
     Route::get('/order-confirm/{id}','Admin\OrdersController@confirmOrder')->name('admin.order.confirm');

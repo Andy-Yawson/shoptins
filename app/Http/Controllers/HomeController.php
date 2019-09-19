@@ -37,7 +37,7 @@ class HomeController extends Controller
                 'postContact','privacyPolicy',
             'termsCondition','show_product_by_shops','userRedirect','userCallback',
                 'searchQueryResults','searchQuery','home','about','internationalForm',
-                'addInternationalShopping','analy']);
+                'addInternationalShopping','clearInternationalCart','analy']);
     }
 
 
@@ -128,6 +128,7 @@ class HomeController extends Controller
         $international->shopper_assist = $shopper_assist;
         $international->self_shopper = $self_shopper;
         $international->address = $address;
+        $international->price = $request->price;
         $international->code = Session::get('code');
 
         $international->save();
@@ -413,6 +414,12 @@ class HomeController extends Controller
         }
         return redirect()->route('user.change.address')
                 ->with('success','Address details updated successfully!');
+    }
+
+    public function clearInternationalCart($code){
+        DB::delete("DELETE FROM international WHERE code = ? ",[$code]);
+        \session()->forget('code');
+        return redirect()->route('user.int.order');
     }
 
 }

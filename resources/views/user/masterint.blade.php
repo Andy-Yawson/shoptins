@@ -15,6 +15,15 @@
     <link href="{{ asset('home/css/ui.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('home/css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 1200px)"/>
     @yield('styles')
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147673486-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-147673486-1');
+    </script>
 </head>
 <body>
 

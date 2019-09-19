@@ -10,10 +10,13 @@
             <aside class="col-md-3 mb-2">
                 <div class="card">
                     <header class="card-header white category-header">
-                        <i class="icon-menu"></i>
-                        Categories
+	                    <a href="#" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" class="collapsed">
+		                    <i class="icon-action fa fa-chevron-down"></i>
+		                    <h6 class="title">Categories</h6>
+	                    </a>
                     </header>
-                    <ul class="menu-category">
+	                <div class="filter-content collapse show" id="collapseCategory">
+                        <ul class="menu-category">
                         <?php $categories = \App\Category::orderBy('created_at','asc')->limit(6)->get(); ?>
                         @foreach($categories as $category)
                             <li>
@@ -24,6 +27,28 @@
                         @endforeach
                         <li><a href="{{route('user.shop')}}">Show All Categories</a></li>
                     </ul>
+	                </div>
+                </div>
+                <div class="card">
+                    <header class="card-header white category-header">
+	                    <a href="#" data-toggle="collapse" data-target="#collapseManufacturer" aria-expanded="true" class="collapsed">
+		                    <i class="icon-action fa fa-chevron-down"></i>
+	                        <h6 class="title">Manufacture</h6>
+	                    </a>
+                    </header>
+	                <div class="filter-content collapse" id="collapseManufacturer">
+		                <ul class="menu-category">
+                            <?php $manufacturer = \App\Manufacture::orderBy('created_at','asc')->limit(6)->get(); ?>
+			                @foreach($manufacturer as $manufacture)
+				                <li>
+					                <a href="{{route('user.shop.manufacture',$manufacture->manufacture_slug)}}">
+						                {{$manufacture->manufacture_name}}
+					                </a>
+				                </li>
+			                @endforeach
+			                <li><a href="{{route('user.shop')}}">Show All Manufacturers</a></li>
+		                </ul>
+	                </div>
                 </div>
             </aside>
             <div class="col-md-9">

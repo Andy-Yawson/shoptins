@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\International;
+use App\InternationalOrder;
 use App\LogOrder;
 use App\Order;
 use App\Payment;
@@ -141,5 +142,19 @@ class OrdersController extends Controller
 
         return redirect(route('admin.view.orders'))
             ->with('status','Order was declined successfully');
+    }
+
+    public function confirmOrderInt($code){
+        InternationalOrder::where('order_code',$code)
+            ->update(['status'=>1]);
+        return redirect()->route('admin.view.orders.int')
+            ->with('status', 'Order confirmed successfully!');
+    }
+
+    public function declineOrderInt($code){
+        InternationalOrder::where('order_code',$code)
+            ->update(['status'=>2]);
+        return redirect()->route('admin.view.orders.int')
+            ->with('status', 'Order declined successfully!');;
     }
 }

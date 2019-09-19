@@ -131,39 +131,6 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-4">
-										<div class="card">
-											<div class="card-header">
-												<h4 class="card-title">Bank Payment</h4>
-											</div>
-											<div class="card-body">
-												<dl class="param">
-													<dt>BANK:</dt>
-													<dd> GT BANK</dd>
-												</dl>
-												<dl class="param">
-													<dt>Account number:</dt>
-													<dd> 12345678912345</dd>
-												</dl>
-												<dl class="param">
-													<dt>Account Name:</dt>
-													<dd> Shoptins</dd>
-												</dl>
-												{{--<p>
-													<strong>Note:</strong>
-													Once deposit is done, be sure to click on the third radio button
-													and click on place order. System admins will rectify payment and
-													confirm order.
-												</p>--}}
-											</div>
-											<div class="card-footer">
-												<label class="switch">
-													<input type="checkbox" name="payment_type" value="bank">
-													<span class="slider round"></span>
-												</label>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>

@@ -52,14 +52,15 @@
                                width="100%">
                             <thead>
                             <tr>
-                                <th>Order Code</th>
+                                <th>Code</th>
                                 <th>Link</th>
-                                <th>Quantity</th>
-                                <th>Weight</th>
+                                <th>Qty</th>
+                                <th>KG</th>
                                 <th>Origin</th>
-                                <th>Destination</th>
                                 <th>Shopper Assist</th>
                                 <th>Self Shopper</th>
+                                <th>Price</th>
+                                <th>SubTotal</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -70,7 +71,6 @@
                                         <td>{{ $detail->quantity }}</td>
                                         <td>{{ $detail->weight }}</td>
                                         <td>{{ $detail->origin }}</td>
-                                        <td>{{ $detail->destination }}</td>
                                         <td>
                                             @if($detail->shopper_assist == 1)
                                                 <p>yes</p>
@@ -85,9 +85,44 @@
                                                 <p>No</p>
                                             @endif
                                         </td>
+                                        <td>
+                                            {{ $detail->price }}
+                                        </td>
+                                        <td>
+                                            {{ $detail->price * $detail->quantity }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="8">Total With Admin Fee:</td>
+                                <td>
+                                    <strong>
+                                        <?php $total = 0;$check = false; ?>
+                                        @foreach($order_detail as $detail)
+                                            <?php $total = ($total + $detail->price) * $detail->quantity  ?>
+                                        @endforeach
+                                        @foreach($order_detail as $detail)
+                                            @if($detail->shopper_assist == 1)
+                                                <?php $check = true; ?>
+                                            @endif
+                                        @endforeach
+                                        @if($check)
+                                            = &#8373;{{ $total + 50 }}
+                                        @else
+                                            = &#8373;{{ $total }}
+                                        @endif
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="9">
+                                    <a href="{{ route('admin.order.confirm.int',$order_detail[0]->order_code) }}"><button class="btn btn-primary">Confirm Order</button></a>
+                                    <a href="{{ route('admin.order.decline.int',$order_detail[0]->order_code) }}"><button class="btn btn-danger">Decline Order</button></a>
+                                </td>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

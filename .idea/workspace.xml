@@ -2,21 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4242ff7-6447-4fb3-8693-21e118dcf409" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/product_images/21296094685d80c2315ab33.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/account/address.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/account/detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/account/menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/account/orders.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/account/password.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Shipping.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Shipping.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/checkout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/International.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/International.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_01_145834_create_international_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_01_145834_create_international_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/product_images/21296094685d80c2315ab33.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slider_images/1003630215d7e75f294799.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slider_images/11926619885d7e75e1deedd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slider_images/17646776275d7e7604407b6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/admin/admin_dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/admin/admin_dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/admin/view_order_int.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/admin/view_order_int.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/international/order-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/international/order-form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/user/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/masterint.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/masterint.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user_payment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user_payment.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoptins.zip" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -314,7 +318,10 @@
       <workItem from="1568563608530" duration="5373000" />
       <workItem from="1568569622091" duration="3318000" />
       <workItem from="1568719528352" duration="170000" />
-      <workItem from="1568719843946" duration="10990000" />
+      <workItem from="1568719843946" duration="11063000" />
+      <workItem from="1568919499717" duration="3410000" />
+      <workItem from="1568924627467" duration="9988000" />
+      <workItem from="1568935262532" duration="380000" />
     </task>
     <servers />
   </component>

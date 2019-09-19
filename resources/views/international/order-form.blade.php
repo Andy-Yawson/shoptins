@@ -42,7 +42,7 @@
 								Shop from overseas: Amazon, Ebay, Target, Zara ETC and have your delivery in Ghana
 							</h3>
 						</header>
-						<form method="post" action="{{ route('user.int.place') }}">
+						<form method="post" action="{{ route('user.int.place') }}" id="intShoppingForm">
 							{{ csrf_field() }}
 							<div class="billing_details">
 								<div class="col-lg-12">
@@ -60,9 +60,11 @@
 
 									<div class="form-group">
 										<label for="weight">Product Weight (kg) <span>*</span></label>
-										<input type="text" class="form-control" id="weight" aria-describedby="name"
-										       name="weight" required>
+										<input type="number" class="form-control" id="weight" aria-describedby="name"
+										       name="weight" required step="0.5" min="1" max="70.5">
 									</div>
+
+									<input type="hidden" name="price" value="" id="priceInput">
 
 									<div class="form-group">
 										<label for="origin">Product Origin <span>*</span></label>
@@ -145,10 +147,64 @@
 							<p class="alert alert-warning">
 								Add as many items as you want to cart, when you are done click on place your order
 							</p>
+							@if(session()->has('code'))
+								<?php
+								$check = \App\International::where('shopper_assist', 1)
+											->where('code', session()->get('code'))->get();
+									if(count($check) > 0){
+										?>
+										<dl class="dlist-align">
+											<dt>Admin Fee:</dt>
+											<dd class="text-right">GH&#8373;50</dd>
+										</dl>
+										<?php
+									}else{
+                                    ?>
+									<dl class="dlist-align">
+										<dt>Admin Fee:</dt>
+										<dd class="text-right">GH&#8373; 0</dd>
+									</dl>
+                                    <?php
+									}
+								?>
+
+							<dl class="dlist-align">
+								<dt>Subtotal:</dt>
+								<dd class="text-right">
+									<?php
+                                    $checkSub = \App\International::where('code', session()->get('code'))->get();
+                                    $subTotal = 0;
+									?>
+									@foreach($checkSub as $c)
+                                        <?php
+                                            $subTotal = ($subTotal + $c->price) * $c->quantity;
+                                        ?>
+									@endforeach
+									GH&#8373;{{ $subTotal }}
+								</dd>
+							</dl>
+							<dl class="dlist-align h4">
+								<dt>Total:</dt>
+								<dd class="text-right">
+									<strong>
+										@if(count($check) > 0)
+											GH&#8373;{{ $subTotal + 50 }}
+										@else
+											GH&#8373;{{ $subTotal }}
+										@endif
+									</strong>
+								</dd>
+							</dl>
+							@endif
+							<hr>
 
 							<i class="fa fa-shopping-cart" style="color: #28a745"></i>
 							@if(session()->has('code'))
 								<span id="product-inter" style="color: #28a745"><b>{{ count(\App\International::where('code',session('code'))->get()) }} product added</b></span>
+								<a class="btn btn-danger float-right" href="{{ route('int.clear.cart',session()->get('code')) }}">
+									<i class="fa fa-trash"></i>
+									Clear Cart
+								</a>
 							@else
 								<span id="product-inter" style="color: #28a745"><b>0 product(s) added</b></span>
 							@endif
@@ -529,25 +585,25 @@
             58.5, 59, 59.5, 60, 60.5, 61, 61.5, 62, 62.5, 63, 63.5, 64, 64.5, 65, 65.5, 66,
             66.5, 67, 67.5, 68, 68.5, 69, 69.5, 70, 70.5];
 
-        var prices = [198.198,222.222,258.258,282.282,324.324,390.39,450.45,516.516,576.576,
-            642.642,708.708,768.768,834.834,894.894,960.96,1027.026,1087.086,1153.152,1213.212,
-            1291.29,1363.362,1441.44,1513.512,1591.59,1663.662,1735.734,1813.812,1885.884,1963.962,
-            2036.034,2114.112,2186.184,2264.262,2336.334,2414.412,2486.484,2558.556,2636.634,2708.706,
-            2786.784,2858.856,2930.928,3003,3075.072,3147.144,3219.216,3291.288,3369.366,3441.438,
-            3513.51,3585.582,3657.654,3729.726,3807.804,3879.876,3951.948,4024.02,4096.092,4168.164,
-            4240.236,4312.308,4390.386,4462.458,4534.53,4606.602,4678.674,4750.746,4822.818,4900.896,4972.968,
-            5045.04,5117.112,5189.184,5261.256,5333.328,5411.406,5483.478,5555.55,5627.622,5699.694,
-            5771.766,5843.838,5921.916,5993.988,6066.06,6138.132,6210.204,6282.276,6354.348,6432.426,
-            6504.498,6576.57,6648.642,6720.714,6792.786,6864.858,6936.93,7015.008,7087.08,
-            7165.158,7243.236,7321.314,7441.434,7477.47,7531.524,7567.56,7627.62,7663.656,7723.716,
-            7759.752,7813.806,7849.842,7909.902,7945.938,8005.998,8042.034,8096.088,8132.124,8192.184,
-            8228.22,8288.28,8318.31,8378.37,8414.406,8474.466,8510.502,8570.562,8600.592,8660.652,
-            8696.688,8756.748,8792.784,8852.844,8882.874,8942.934,8978.97,9039.03,9075.066,9129.12,20.79]
+        var prices = [198.198,222.222,258.258,338.7384,389.1888,468.468,540.54,619.8192,691.8912,
+            771.1704,850.4496,922.5216,1001.801,1073.873,1153.152,1232.431,1304.503,1383.782,1455.854,
+            1549.548,1636.034,1729.728,1816.214,1909.908,1996.394,2082.881,2176.574,2263.061,2356.754,
+            2443.241,2536.934,2623.421,2717.114,2803.601,2897.294,2983.781,3070.267,3163.961,3250.447,
+            3344.141,3430.627,3517.114,3603.6,3690.086,3776.573,3863.059,3949.546,4043.239,4129.726,
+            4216.212,4302.698,4389.185,4475.671,4569.365,4655.851,4742.338,4828.824,4915.31,5001.797,
+            5088.283,5174.77,5268.463,5354.95,5441.436,5527.922,5614.409,5700.895,5787.382,5881.075,5967.562,
+            6054.048,6140.534,6227.021,6313.507,6399.994,6493.687,6580.174,6666.66,6753.146,6839.633,
+            6926.119,7012.606,7106.299,7192.786,7279.272,7365.758,7452.245,7538.731,7625.218,7718.911,
+            7805.398,7891.884,7978.37,8064.857,8151.343,8237.83,8324.316,8418.01,8504.496,
+            8598.19,8691.883,8785.577,8929.721,8972.964,9037.829,9081.072,9153.144,9196.387,9268.459,
+            9311.702,9376.567,9419.81,9491.882,9535.126,9607.198,9650.441,9715.306,9758.549,9830.621,
+            9873.864,9945.936,9981.972,10054.04,10097.29,10169.36,10212.6,10284.67,10320.71,10392.78,
+            10436.03,10508.1,10551.34,10623.41,10659.45,10731.52,10774.76,10846.84,10890.08,10954.94,20.79]
 
         $("#myWeight").change(function () {
             weight = $(this).children("option:selected").val()
-        })
-        var priceVal = $('#totalPrice')
+        });
+        var priceVal = $('#totalPrice');
         $('#priceCal').click(function () {
             for (var i = 0; i < kilos.length; i++){
                 if (weight == kilos[i]){
@@ -555,6 +611,18 @@
                     priceVal.val(prices[i])
                 }
             }
-        })
+        });
+
+        $('#intShoppingForm').submit(function () {
+	        var weight = $('#weight').val()
+            for (var i = 0; i < kilos.length; i++){
+                if (weight == kilos[i]){
+                    //console.log("The price is ",prices[i])
+                    $('#priceInput').val(prices[i])
+	                return true;
+                }
+            }
+        });
+
 	</script>
 @endsection

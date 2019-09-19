@@ -15,16 +15,17 @@ class CreateInternationalTable extends Migration
     {
         Schema::create('international', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('link');
+            $table->text('link');
             $table->integer('quantity');
             $table->string('weight');
             $table->string('origin');
             $table->string('destination');
-            $table->string('other');
+            $table->text('other');
             $table->integer('shopper_assist');
             $table->integer('self_shopper');
-            $table->string('address');
+            $table->text('address');
             $table->string('code');
+            $table->float('price');
             $table->integer('user_id')->nullable();
             $table->timestamps();
         });

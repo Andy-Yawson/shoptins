@@ -56,7 +56,7 @@
                                 <div class="peer peer-greed"><span id="sparklinedash4"></span></div>
                                 <div class="peer">
                                     <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">
-                                        {{ count(\App\International::all()) }}
+                                        {{ count(\App\InternationalOrder::all()) }}
                                     </span>
                                 </div>
                             </div>

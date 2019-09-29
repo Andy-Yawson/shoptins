@@ -21,6 +21,7 @@
                                 <th>Customer Name</th>
                                 <th>Customer Email</th>
                                 <th>Order Status</th>
+                                <th>Payment</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -30,6 +31,7 @@
                                 <th>Customer Name</th>
                                 <th>Customer Email</th>
                                 <th>Order Status</th>
+                                <th>Payment</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
@@ -49,12 +51,30 @@
                                         @endif
                                     </td>
                                     <td>
+                                        @if($order->payment == 0)
+                                            <p class="text-danger">Not Paid</p>
+                                        @elseif($order->payment == 1)
+                                            <p class="text-success">Paid</p>
+                                        @endif
+                                    </td>
+                                    <td>
                                         <a href="{{ route('admin.view.order.detail.int',$order->order_code) }}">
                                             <button class="btn btn-success">
                                                 <i class="fa fa-bookmark"></i>
                                                 Manage Order
                                             </button>
                                         </a>
+                                        @if($order->payment == 0)
+                                            <a href="{{ route('admin.payment.confirm.int',$order->order_code) }}" class="btn btn-success">
+                                                <i class="fa fa-thumbs-up"></i>
+                                                Paid
+                                            </a>
+                                        @elseif($order->payment == 1)
+                                            <a href="{{ route('admin.payment.decline.int',$order->order_code) }}" class="btn btn-danger">
+                                                <i class="fa fa-thumbs-down"></i>
+                                                unpaid
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

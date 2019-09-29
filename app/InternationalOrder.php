@@ -8,5 +8,5 @@ class InternationalOrder extends Model
 {
     protected $table = "international_order";
 
-    protected $fillable = ['customer_id','order_code','status'];
+    protected $fillable = ['customer_id','order_code','status', 'payment'];
 }

@@ -94,7 +94,7 @@
                                     <button type="submit" class="btn btn-primary btn-block"> Register  </button>
                                 </div> <!-- form-group// -->
                                 <small class="text-muted">By clicking the 'Register' button,
-                                    you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
+                                    you confirm that you accept our <br> <a href="{{ route('user.terms') }}">Terms of use and Privacy Policy</a>.</small>
                             </form>
                         </article>
                     </div> <!-- card.// -->

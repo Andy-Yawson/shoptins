@@ -91,9 +91,11 @@
 											<div class="card-body">
 												<ol>
 													<li>Dial *170#</li>
-													<li>Select Pay Bills</li>
+													{{--<li>Select Pay Bills</li>
 													<li>Choose General Payment</li>
-													<li>Enter Shoptins as Merchant</li>
+													<li>Enter <b>Shoptins</b> as Merchant</li>--}}
+													<li>Transfer Money</li>
+													<li>Dial <b>0542798664</b> as payment number</li>
 													<li>Enter amount to pay</li>
 													<li>Enter <b>{{session()->get('order_id')}}</b> as
 														reference

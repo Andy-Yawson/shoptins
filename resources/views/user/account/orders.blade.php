@@ -81,7 +81,58 @@
 								</tbody>
 							</table>
 						@else
-							<h3>You have not made any orders yet</h3>
+							<h3>You have not made any local orders yet</h3>
+						@endif
+						@if(count($int_orders))
+							<hr>
+							<h3>Your International Orders</h3>
+								<table id="dataTable" class="table table-striped" cellspacing="0"
+								       width="100%">
+									<thead>
+									<tr>
+										<th>Order Code</th>
+										<th>Payment</th>
+										<th>Order Total</th>
+										<th>Action</th>
+									</tr>
+									</thead>
+									<tbody>
+									@foreach($int_orders as $order)
+										<tr>
+											<td>{{ $order->order_code }}</td>
+											<td>
+												@if($order->payment == 0)
+													<button class="btn btn-warning">Not Paid</button>
+												@elseif($order->payment == 1)
+													<button class="btn btn-success">Paid</button>
+												@endif
+											</td>
+											<td>
+												<?php
+												$checks = \Illuminate\Support\Facades\DB::table('international')
+													->where('code',$order->order_code)
+													->sum('price');
+
+												echo $checks;
+												?>
+											</td>
+											<td>
+												@if($order->status == 1)
+													<button class="btn btn-success">Approved</button>
+												@elseif($order->status == 0)
+													<button class="btn btn-info">Pending</button>
+												@elseif($order->status == 2)
+													<button class="btn btn-danger">Declined</button>
+												@endif
+												<a href="{{ route('user.account.detail.int',$order->order_code) }}"
+												   class="btn btn-info" title="View Detail">
+													View Detail
+												</a>
+											</td>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
 						@endif
 				</div>
 			</div>

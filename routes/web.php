@@ -12,17 +12,25 @@
 */
 
 
-Route::get('/analytic','HomeController@analy');
+//=========International Auth ===========
+Route::get('/auth/user', 'HomeController@loginView')->name('user.int.login');
+Route::post('/auth/user/login', 'HomeController@loginUserInt')->name('user.int.login.post');
+Route::post('/auth/user/register', 'HomeController@registerUserInt')->name('user.int.register');
+//========== End of International Auth ============
 
-Route::get('/authenticate-user', 'HomeController@loginView')->name('user.login.view');
 Route::get('/', 'HomeController@home')->name('user.home');
 Route::get('/customer', 'HomeController@welcome')->name('user.welcome');
 Route::get('/about-us', 'HomeController@about')->name('user.about');
 
 Route::get('/international-order', 'HomeController@internationalForm')->name('user.int.order');
 Route::post('/international-order', 'HomeController@addInternationalShopping')->name('user.int.place');
-Route::get('/place-international-order', 'HomeController@placeInternationalOrder')->name('user.int.order.place');
-Route::get('/clear-international-cart/{code}', 'HomeController@clearInternationalCart')->name('int.clear.cart');
+Route::post('/place-international-order', 'HomeController@placeInternationalOrder')->name('user.int.order.place');
+Route::get('/clear-international-cart/{id}', 'HomeController@clearInternationalCart')->name('int.clear.cart');
+Route::get('/payment-international', 'HomeController@internationalPaymentOption')->name('user.int.payment');
+Route::get('/decline-international-order/{code}', 'HomeController@declineOrderInt')->name('user.int.decline.order');
+Route::get('/re-place/order/{code}/replace', 'HomeController@replaceOrderInt')->name('user.int.replace.order');
+Route::get('/my-account/order/{code}/detail', 'HomeController@myAccountOrderDetailInt')->name('user.account.detail.int');
+
 
 Route::get('/shop', 'HomeController@viewShop')->name('user.shop');
 Route::get('/shop-by-category/{category_slug}', 'HomeController@show_product_by_category')->name('user.shop.category');
@@ -151,6 +159,8 @@ Route::prefix('admin')->group(function (){
     Route::get('/view-order-details-international/{code}','Admin\OrdersController@viewOrderInt')->name('admin.view.order.detail.int');
     Route::get('/order-confirm-international/{code}','Admin\OrdersController@confirmOrderInt')->name('admin.order.confirm.int');
     Route::get('/order-decline-international/{code}','Admin\OrdersController@declineOrderInt')->name('admin.order.decline.int');
+    Route::get('/payment-confirm-international/{code}','Admin\OrdersController@confirmPaymentInt')->name('admin.payment.confirm.int');
+    Route::get('/payment-decline-international/{code}','Admin\OrdersController@declinePaymentInt')->name('admin.payment.decline.int');
 
     Route::get('/order-successfully-delivered/{id}','Admin\OrdersController@activeOrder')->name('admin.active.order');
     Route::get('/order-not-delivered/{id}','Admin\OrdersController@unactiveOrder')->name('admin.unactive.order');

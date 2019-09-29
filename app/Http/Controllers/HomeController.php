@@ -37,7 +37,8 @@ class HomeController extends Controller
                 'postContact','privacyPolicy',
             'termsCondition','show_product_by_shops','userRedirect','userCallback',
                 'searchQueryResults','searchQuery','home','about','internationalForm',
-                'addInternationalShopping','clearInternationalCart','analy']);
+                'addInternationalShopping','clearInternationalCart','loginView',
+                'loginUserInt','registerUserInt','internationalPaymentOption']);
     }
 
 
@@ -138,7 +139,24 @@ class HomeController extends Controller
             ->with('success','product added successfully');
     }
 
-    public function placeInternationalOrder(){
+    public function internationalPaymentOption(){
+        $check = International::where('code', \session()->get('code'))->get();
+        if (count($check) > 0){
+            if (\auth()->check())
+                return view('international.user_payment');
+            else
+                return redirect()->route('user.int.login');
+        }else{
+            return redirect()->route('user.int.order')
+                ->with('error','You need to add an item to cart before proceeding!');
+        }
+    }
+
+    public function placeInternationalOrder(Request $request){
+        $this->validate($request,array(
+            'payment_type' => 'required'
+        ));
+
         if (Session::has('code')){
 
             International::where('code',Session::get('code'))
@@ -148,7 +166,8 @@ class HomeController extends Controller
             InternationalOrder::create([
                 'order_code' => $code,
                 'customer_id' => \auth()->user()->id,
-                'status' => 0
+                'status' => 0,
+                'payment' => 0
             ]);
 
             Session::forget('code');
@@ -158,6 +177,15 @@ class HomeController extends Controller
             return redirect()->route('user.int.order')
                 ->with('error','You need to add at least one item');
         }
+    }
+
+    public function replaceOrderInt($code){
+        InternationalOrder::where('order_code',$code)
+            ->update([
+                'status' => 0
+            ]);
+        return redirect()->route('user.account.orders')
+            ->with('status','Order has been re-placed successfully!');
     }
 
     public function viewShop(){
@@ -281,7 +309,45 @@ class HomeController extends Controller
     }
 
     public function loginView(){
-        return view('auth.login');
+        return view('auth.int-login');
+    }
+
+    public function loginUserInt(Request $request){
+        $this->validate($request, array(
+            'email' => 'required|email',
+            'password' => 'required|min:7'
+        ));
+
+        if(Auth::guard('web')
+            ->attempt(['email' => $request->email,
+                        'password' => $request->password],
+                        $request->remember)){
+
+            return redirect()->intended(route('user.int.order'));
+        }
+
+        return redirect()->back()->withInput($request->only('email','remember'));
+
+    }
+
+    public function registerUserInt(Request $request){
+        $this->validate($request, [
+            'first_name' => 'required|min:3|max:20',
+            'last_name' => 'required|min:3|max:20',
+            'phone' => 'required|min:3|max:10',
+            'password' => 'required|min:6|confirmed|'
+        ]);
+
+        $user = new User();
+        $user->name = $request->first_name . " " . $request->last_name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        Auth::guard('web')->login($user);
+        return redirect()->intended(route('user.int.order'));
+
     }
 
     public function searchQuery(Request $request){
@@ -303,17 +369,6 @@ class HomeController extends Controller
         return view('search',['results'=>$results]);
     }
 
-    public function analy(){
-        $analyticsData = Analytics::performQuery(
-            Period::years(1),
-            'ga:sessions',
-            [
-                'metrics' => 'ga:sessions, ga:pageviews',
-                'dimensions' => 'ga:yearMonth'
-            ]
-        );
-
-    }
 
     public function myAccountOrders(){
         $all_orders = DB::table('tbl_order')
@@ -322,7 +377,16 @@ class HomeController extends Controller
             ->orderBy('order_id','desc')
             ->where('tbl_order.customer_id',\auth()->user()->id)
             ->get();
-        return view('user.account.orders',['orders'=>$all_orders]);
+
+        /*$int_orders = DB::table('international_order')
+            ->join('international','international_order.order_code',
+                '=', 'international.code')
+            ->select('international.*','international_order.*')
+            ->where('international_order.customer_id', \auth()->user()->id)
+            ->get();*/
+        $int_orders = InternationalOrder::where('customer_id',\auth()->user()->id)->get();
+
+        return view('user.account.orders',['orders'=>$all_orders, 'int_orders'=>$int_orders]);
     }
 
     public function myAccountOrderDetail($id){
@@ -334,6 +398,13 @@ class HomeController extends Controller
             ->select('tbl_order.*','tbl_order_details.*','tbl_shipping.*')
             ->get();
         return view('user.account.detail', ['order_detail' => $order_details]);
+    }
+
+    public function myAccountOrderDetailInt($code){
+        $order_details = International::where('code',$code)->get();
+        $order = InternationalOrder::where('order_code',$code)->first();
+        return view('user.account.int-detail',
+            ['order_detail' => $order_details, 'order' => $order]);
     }
 
     public function declineOrder($id){
@@ -416,10 +487,16 @@ class HomeController extends Controller
                 ->with('success','Address details updated successfully!');
     }
 
-    public function clearInternationalCart($code){
-        DB::delete("DELETE FROM international WHERE code = ? ",[$code]);
-        \session()->forget('code');
+    public function clearInternationalCart($id){
+        DB::delete("DELETE FROM international WHERE id = ? ",[$id]);
         return redirect()->route('user.int.order');
+    }
+
+    public function declineOrderInt($code){
+        InternationalOrder::where('order_code',$code)
+            ->update(['status'=>2]);
+        return redirect()->route('user.account.orders')
+            ->with('status', 'Order declined successfully!');;
     }
 
 }

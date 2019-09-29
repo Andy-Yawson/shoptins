@@ -157,4 +157,18 @@ class OrdersController extends Controller
         return redirect()->route('admin.view.orders.int')
             ->with('status', 'Order declined successfully!');;
     }
+
+    public function confirmPaymentInt($code){
+        InternationalOrder::where('order_code',$code)
+            ->update(['payment'=>1]);
+        return redirect()->route('admin.view.orders.int')
+            ->with('status', 'Payment confirmed successfully!');
+    }
+
+    public function declinePaymentInt($code){
+        InternationalOrder::where('order_code',$code)
+            ->update(['payment'=>0]);
+        return redirect()->route('admin.view.orders.int')
+            ->with('status', 'Payment changed to unpaid successfully!');
+    }
 }

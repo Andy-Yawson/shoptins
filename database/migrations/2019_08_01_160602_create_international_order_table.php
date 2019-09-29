@@ -18,6 +18,7 @@ class CreateInternationalOrderTable extends Migration
             $table->string('order_code');
             $table->integer('customer_id');
             $table->integer('status');
+            $table->integer('payment');
             $table->timestamps();
         });
     }

@@ -58,7 +58,7 @@
 										<td colspan="3"></td>
 										<td>
 											@if($detail->order_status == 3)
-												<a href="{{route('user.replace.order',$order_detail[0]->order_id)}}"><button class="btn btn-success">Replace Order</button></a>
+												<a href="{{route('user.replace.order',$order_detail[0]->order_id)}}"><button class="btn btn-success">Re-Place Order</button></a>
 											@else
 												<a href="{{route('user.decline.order',$order_detail[0]->order_id)}}"><button class="btn btn-danger">Cancel Order</button></a>
 											@endif

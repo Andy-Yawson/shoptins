@@ -46,7 +46,8 @@ class ProductController extends Controller
         $image = $request->file('product_image');
         $new_name = uniqid(rand()) . "." . $image->getClientOriginalExtension();
         $image->move(public_path("images/product_images"),$new_name);
-
+//        $path = $_SERVER["DOCUMENT_ROOT"] . "/images/product_images";
+//        $image->move($path,$new_name);
 
         if($request->publication_status == null){
             $ps = 0;

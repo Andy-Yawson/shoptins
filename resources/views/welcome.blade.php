@@ -155,7 +155,7 @@
                                     <figcaption class="p-3">
                                         <h6 class="title">
                                             <a href="{{route('user.shop.product.detail',$item->slug)}}">
-                                                {{$item->product_name}}
+	                                            {{ \Illuminate\Support\Str::limit($item->product_name,30,"...")  }}
                                             </a>
                                         </h6>
                                         <div class="price-wrap">
@@ -167,8 +167,7 @@
                                             @endif
                                         </div>
 	                                    <a href="{{ route('user.shop.product.detail',$item->slug) }}" class="btn btn-primary">
-		                                    <i class="fa fa-cart-plus"></i>
-		                                    add to cart
+		                                    Cart <i class="fa fa-cart-plus"></i>
 	                                    </a>
                                     </figcaption>
                                 </figure>
@@ -208,7 +207,7 @@
                                     <figcaption class="p-3">
                                         <h6 class="title">
                                             <a href="{{route('user.shop.product.detail',$item->slug)}}">
-                                                {{$item->product_name}}
+	                                            {{ \Illuminate\Support\Str::limit($item->product_name,30,"...")  }}
                                             </a>
                                         </h6>
                                         <div class="price-wrap">
@@ -220,8 +219,7 @@
                                             @endif
                                         </div>
 	                                    <a href="{{ route('user.shop.product.detail',$item->slug) }}" class="btn btn-primary">
-		                                    <i class="fa fa-cart-plus"></i>
-		                                    add to cart
+		                                    Cart <i class="fa fa-cart-plus"></i>
 	                                    </a>
                                     </figcaption>
                                 </figure>

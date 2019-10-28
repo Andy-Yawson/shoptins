@@ -110,6 +110,11 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="inputPassword4">Product URL</label>
+                                    <input type="text" class="form-control" name="product_url" placeholder="Product URL">
+                                </div>
+
                                 <button type="submit" class="btn btn-primary">Add Product</button>
                                 </form>
                         </div>

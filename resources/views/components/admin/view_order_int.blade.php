@@ -67,7 +67,9 @@
                                 @foreach($order_detail as $detail)
                                     <tr>
                                         <td>{{ $detail->order_code }}</td>
-                                        <td>{{ $detail->link }}</td>
+                                        <td>
+                                            <a href="{{$detail->link}}">{{ \Illuminate\Support\Str::limit($detail->link,35,'...') }}</a>
+                                        </td>
                                         <td>{{ $detail->quantity }}</td>
                                         <td>{{ $detail->weight }}</td>
                                         <td>{{ $detail->origin }}</td>

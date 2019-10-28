@@ -224,7 +224,9 @@
 										?>
 										@foreach($data as $cart)
 											<tr>
-												<td style="width: 70%">{{ $cart->link }}</td>
+												<td style="width: 70%">
+													<a href="{{$cart->link}}" target="_blank">{{ \Illuminate\Support\Str::limit($detail->link,35,'...') }}</a>
+												</td>
 												<td style="width: 30%">
 													<a class="btn btn-danger" href="{{ route('int.clear.cart',$cart->id) }}">
 														<i class="fa fa-trash"></i>

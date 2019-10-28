@@ -2,33 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4242ff7-6447-4fb3-8693-21e118dcf409" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/product_images/2818416715d8b48a3d6ee9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/int-login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/international/user_payment.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/partial/price-modal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/account/int-detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/InternationalOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/InternationalOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_01_160602_create_international_order_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_01_160602_create_international_order_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/public.zip" beforeDir="false" afterPath="$PROJECT_DIR$/public/public.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/owner-login.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/admin/manage_int_orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/admin/manage_int_orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_02_095720_create_tbl_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_02_095720_create_tbl_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/admin/add_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/admin/add_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/admin/view_order_int.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/admin/view_order_int.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/international/order-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/international/order-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/shop.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/account/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/account/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/account/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/account/orders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/masterint.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/masterint.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user_payment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user_payment.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/account/int-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/account/int-detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoptins.zip" beforeDir="false" afterPath="$PROJECT_DIR$/shoptins.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoptins.zip" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -334,7 +318,14 @@
       <workItem from="1569425951004" duration="3548000" />
       <workItem from="1569440146996" duration="2491000" />
       <workItem from="1569612961359" duration="3895000" />
-      <workItem from="1569749727194" duration="6229000" />
+      <workItem from="1569749727194" duration="6298000" />
+      <workItem from="1569835488431" duration="1489000" />
+      <workItem from="1570885695820" duration="198000" />
+      <workItem from="1570886070443" duration="31000" />
+      <workItem from="1570997078410" duration="76000" />
+      <workItem from="1571685708875" duration="1515000" />
+      <workItem from="1572281707203" duration="691000" />
+      <workItem from="1572282429776" duration="120000" />
     </task>
     <servers />
   </component>

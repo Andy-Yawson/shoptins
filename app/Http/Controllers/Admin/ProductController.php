@@ -71,6 +71,7 @@ class ProductController extends Controller
         $product->rating = 0;
         $product->product_del = $request->product_del;
         $product->slug = Str::slug($request->product_name);
+        $product->url = $request->product_url;
         $product->feature = $request->featured == null ? 0 : 1;
         $product->save();
 

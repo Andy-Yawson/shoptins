@@ -31,6 +31,7 @@ CreateTblProductsTable extends Migration
             $table->integer('feature');
             $table->float('rating');
             $table->string('slug');
+            $table->longText('url');
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@
                                 <th>Product Price</th>
                                 <th>Category</th>
                                 <th>Manufacture</th>
+                                <th>Link</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -33,6 +34,7 @@
                                 <th>Product Price</th>
                                 <th>Category</th>
                                 <th>Manufacture</th>
+                                <th>Link</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -45,16 +47,17 @@
                                     <td>&#8373;{{$item->product_price}}</td>
                                     <td>{{$item->category_name}}</td>
                                     <td>{{$item->manufacture_name}}</td>
+                                    <td><a href="{{$item->url}}" target="_blank" class="btn btn-info">Visit Link</a></td>
                                     <td>
                                         @if($item->publication_status == 0)
-                                            <button class="btn btn-danger">Inactive</button>
+                                            <p class="text-danger">Inactive</p>
                                         @else
-                                            <button class="btn btn-success">Active</button>
+                                            <p class="text-success">Active</p>
                                         @endif
                                         @if($item->stock == 0)
-                                            <button class="btn btn-danger">Out Of Stock</button>
+                                            <p class="btn btn-danger">Out Of Stock</p>
                                         @else
-                                            <button class="btn btn-success">In Stock</button>
+                                            <p class="btn btn-success">In Stock</p>
                                         @endif
                                     </td>
                                     <td align="center">

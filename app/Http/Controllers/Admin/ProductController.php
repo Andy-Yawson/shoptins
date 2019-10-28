@@ -178,6 +178,7 @@ class ProductController extends Controller
                     'product_del' => $request->product_del,
                     'category_id' =>$category_id,
                     'manufacture_id' => $manufacture_id,
+                    'url' => $request->product_url,
                     'feature' => $feat]);
 
         LogProduct::create([

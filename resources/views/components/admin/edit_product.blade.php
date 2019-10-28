@@ -53,6 +53,11 @@
                                         <input type="text" class="form-control" rows="6" name="product_del" value="{{$product->product_del}}">
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Product Link</label>
+                                        <input type="text" class="form-control" name="product_url" value="{{$product->url}}">
+                                    </div>
+
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="inputState">Product Category</label>

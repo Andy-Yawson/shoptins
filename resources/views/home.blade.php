@@ -46,7 +46,7 @@
 					</ul>
 				</div>
 				<a class="btn btn-primary btn-xl js-scroll-trigger mr-3" href="{{ route('user.int.order') }}">Shop International</a>
-				<a class="btn btn-success btn-xl js-scroll-trigger" href="{{ route('user.welcome') }}">Shop Local</a>
+				<a class="btn btn-success btn-xl js-scroll-trigger" href="{{ route('user.welcome') }}">Store</a>
 			</div>
 		</div>
 	</div>

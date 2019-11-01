@@ -246,9 +246,6 @@
 								@foreach($others as $item)
 									<div class="col-md-6 col-lg-3 col-sm-12 col-xs-12 item-slide p-2">
 										<figure class="card card-product">
-											@if($item->product_del > 0)
-												<span class="badge-offer"><b> - {{$item->product_del}}%</b></span>
-											@endif
 											<div class="img-wrap">
 												<img src="{{asset('images/product_images/'.$item->product_image)}}">
 											</div>
@@ -313,7 +310,7 @@
 								<figcaption class="text-wrap">
 									<h5 class="title">Secured protocol</h5>
 									<p class="text-muted">
-										We keep you from any threats during shopping with us, its safe.
+										It is safe when shopping with us. We save you from online threats.
 									</p>
 								</figcaption>
 							</figure> <!-- iconbox // -->
@@ -330,7 +327,7 @@
 								<figcaption class="text-wrap">
 									<h5 class="title">Secured Payment</h5>
 									<p class="text-muted">
-										Our payment is made easy and secured with problems at all.
+										Pay securely via Mobile Money, Bank deposits and Paypal.
 									</p>
 								</figcaption>
 							</figure> <!-- iconbox // -->

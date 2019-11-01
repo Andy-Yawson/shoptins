@@ -33,7 +33,7 @@
                     <header class="card-header white category-header">
 	                    <a href="#" data-toggle="collapse" data-target="#collapseManufacturer" aria-expanded="true" class="collapsed">
 		                    <i class="icon-action fa fa-chevron-down"></i>
-	                        <h6 class="title">Manufacture</h6>
+	                        <h6 class="title">Manufacturer</h6>
 	                    </a>
                     </header>
 	                <div class="filter-content collapse" id="collapseManufacturer">

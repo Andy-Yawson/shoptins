@@ -52,7 +52,7 @@
                                 <ul class="list-unstyled list-lg">
                                     @foreach($manufacture as $menu)
                                         <li>
-                                            <a href="{{route('user.shop.manufacture',$menu->manufacture_id)}}">
+                                            <a href="{{route('user.shop.manufacture',$menu->manufacture_slug)}}">
                                                 {{$menu->manufacture_name}}
                                                 <span class="float-right badge badge-light round">{{
                                                     \App\Product::where('manufacture_id',$menu->manufacture_id)->count()
@@ -84,7 +84,7 @@
                                             <figcaption class="p-3">
                                                 <h6 class="title">
                                                     <a href="{{route('user.shop.product.detail',$item->slug)}}">
-                                                        {{$item->product_name}}
+                                                        {{ \Illuminate\Support\Str::limit($item->product_name,30,"...")  }}
                                                     </a>
                                                 </h6>
                                                 <div class="price-wrap">

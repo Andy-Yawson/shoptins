@@ -250,7 +250,7 @@
 												<img src="{{asset('images/product_images/'.$item->product_image)}}">
 											</div>
 											<figcaption class="info-wrap">
-												<h4 class="title">{{$item->product_name}}</h4>
+												<h4 class="title">{{ \Illuminate\Support\Str::limit($item->product_name,34,"...")  }}</h4>
 											</figcaption>
 											<div class="bottom-wrap">
 												<a href="{{route('user.shop.product.detail',$item->slug)}}"

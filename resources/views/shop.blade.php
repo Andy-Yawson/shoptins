@@ -173,7 +173,7 @@
                             <figcaption class="text-wrap">
                                 <h5 class="title">Secured Payment</h5>
                                 <p class="text-muted">
-                                    Our payment is made easy and secured with problems at all.
+                                    Our payment is made easy and secured without problems at all.
                                 </p>
                             </figcaption>
                         </figure> <!-- iconbox // -->

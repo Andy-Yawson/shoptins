@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e4242ff7-6447-4fb3-8693-21e118dcf409" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/product_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product_details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/international/order-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/international/order-form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/shop.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -322,7 +322,9 @@
       <workItem from="1572283549777" duration="341000" />
       <workItem from="1572531500143" duration="82000" />
       <workItem from="1572595348380" duration="598000" />
-      <workItem from="1572596057928" duration="458000" />
+      <workItem from="1572596057928" duration="1087000" />
+      <workItem from="1573332964342" duration="64000" />
+      <workItem from="1580157512755" duration="625000" />
     </task>
     <servers />
   </component>
